@@ -7,10 +7,14 @@ export default axios.create({
 });
 
 export const axiosRefresh = axios.create({
+    // baseURL: 'http://localhost:3500',
     baseURL: BASE_URL,
+
     headers: { 'Content-Type': 'application/json' },
     withCredentials: true
 
 }
 );
+//     baseURL: 'http://localhost:3500/profile',
+
 

@@ -1,58 +1,53 @@
-import NavBar from "./Navbar";
-import { useEffect, useState } from "react";
-import axios from "axios";
-// import useRefresh from "../hooks/useRefresh";
-import useAxiosRefresh from "../hooks/useAxiosRefresh"; //useAxiosPrivate
-import useAuth from "../hooks/useAuth";
+import { useEffect} from "react";
+import useAxiosRefresh from "../hooks/useAxiosRefresh";
+import HikeElement from './HikeElement'
+import { useNavigate } from "react-router-dom";
 
-const Hikes = () => {
-    const [hikes, setHikes] = useState();
+const Hikes = ({ hikes, setHikes,individualHike,loadForeignProfile }) => {
     const axiosRefresh = useAxiosRefresh();
-    // console.log({axiosRefresh})
-    // const refresh = useRefresh();
-    const { auth } = useAuth();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        let isMounted = false;
         const controller = new AbortController();
-
         const getData = async () => {
             try {
-                const response = await axiosRefresh.get('/hikes',{
-                        signal: controller.signal
-                    });
-                console.log(response.data)
-                isMounted = true;
+                const response = await axiosRefresh.get('/hikes', {
+                    signal: controller.signal
+                });
+                // console.log(response.data)
                 await setHikes(response.data);
             }
             catch (err) {
                 console.error(err);
             }
         }
-
         getData();
         return () => {
-            isMounted = false;
             controller.abort();
         }
-    }, [auth])
+    }, [])
+
+
+
+
+    if (hikes === undefined) return <p>Loading</p>
+
+    const hikeElements = hikes.map((hike, index) => {return (<HikeElement key={index} hike={hike} individualHike={individualHike} loadForeignProfile={loadForeignProfile} />)});
+    const handleClick=()=>{ navigate('/hikes/create')};
+   
 
 
 
     return (
         <section>
-            <h1>Hikes</h1>
+            <button onClick={() => handleClick("crete")}>Create</button>
 
-            {hikes?.length
-                ? (<ul> {hikes.map((hike, index) => <li key={index}> {hike._id} {hike.hikeOrigin} </li>)} </ul>) :
-                <p>Loading</p>
-            }
 
-            <br />
-            <NavBar />
+            {hikeElements}
 
         </section>
     )
+
 
 }
 export default Hikes;

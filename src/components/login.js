@@ -31,10 +31,10 @@ const Login = () => {
             );
             // console.log(JSON.stringify(response.data));
             const acessToken = response.data.acessToken;
-            console.log(acessToken)
+            // console.log(acessToken)
             setAuth({ user, pass, acessToken });
             // navigate(from, { replace: true });
-            navigate("/navbar")
+            navigate("/")
 
 
         } catch (err) {

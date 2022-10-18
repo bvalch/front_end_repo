@@ -8,7 +8,7 @@ const RequireAuth = () => {
 
     return (
         // auth?.user ? <Outlet /> : <Navigate to="/login" state={{ from: location }} replace />
-        auth? <Outlet />:<p>not autorised</p> 
+        auth.user !== undefined ? <Outlet />:<p>You are not authorized</p> 
     )
 
 };

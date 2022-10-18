@@ -7,16 +7,16 @@ import { useNavigate } from 'react-router-dom';
 const Register = () => {
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
-    const [success, setSuccess] = useState(false)
+    const navigate = useNavigate();
 
-    
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const response = await axios.post('http://localhost:3500/register',
-                JSON.stringify({user, pass}),
+                JSON.stringify({ user, pass }),
                 {
                     headers: { 'Content-Type': 'application/json' },
                     withCredentials: true
@@ -25,9 +25,9 @@ const Register = () => {
             console.log(response.data)
             // console.log(response.accessToken)
             // console.log(JSON.stringify(response))
-            setSuccess(true)
             setUser("")
             setPass("")
+            navigate('/login')
 
         } catch (err) {
             console.error(err)
@@ -39,7 +39,7 @@ const Register = () => {
 
 
     return (
-        <div className="registerCont">
+        <section className="registerCont">
             <h1>Register an account</h1>
             <br />
 
@@ -70,7 +70,7 @@ const Register = () => {
                 <button>Sign Up</button>
             </form>
 
-        </div>
+        </section>
 
     )
 
