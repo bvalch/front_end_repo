@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import CreateProfile from "./CreateProfile";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
@@ -32,7 +32,18 @@ const Profile = ({ profile, setProfile }) => {
         return () => {
             controller.abort();
         }
-    }, [profile])
+    }, [])
+
+    const handleDelete = async () => {
+        try {
+            const response = await axiosRefresh.delete('profile/delete',
+            )
+            console.log(response)
+
+        } catch (err) { 
+            console.error(err) }
+    }
+
 
 
 
@@ -52,6 +63,8 @@ const Profile = ({ profile, setProfile }) => {
             </ul>
 
             <Link to='/edit'>Update</Link>
+            <Link onClick={handleDelete}>Delete</Link>
+
         </section>
 
 

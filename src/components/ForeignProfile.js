@@ -52,7 +52,6 @@ const ForeignProfile = ({ profile }) => {
                 <li>{profile.personInfo}</li>
             </ul>
 
-            <Link to='/edit'>Update</Link>
         </section>
 
 
