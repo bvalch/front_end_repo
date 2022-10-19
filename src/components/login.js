@@ -1,7 +1,5 @@
 // import login from '../css/login.css'
 import { useState, useContext } from "react";
-// import AuthContext from '../context/authProvider'
-// import axios from 'axios';
 import  axios  from '../api/axios'
 import useAuth from "../hooks/useAuth";
 import { Link, useNavigate, useLocation } from 'react-router-dom'

@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom"
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 import ForeignProfile from "./ForeignProfile";
 
-const HikeElement = ({ hike, individualHike,loadForeignProfile }) => {
+const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
+    const { auth } = useAuth();
     const navigate = useNavigate();
     const axiosRefresh = useAxiosRefresh();
 
@@ -27,35 +29,44 @@ const HikeElement = ({ hike, individualHike,loadForeignProfile }) => {
     };
 
     const handleForeignRequest = async (e) => {
-        // e.preventDefault();
+        // console.log(auth.user === e.person)
+
+        // // console.log(auth.user)
         // console.log(e)
-         await loadForeignProfile(e)
+        // e.person == auth.user ? await navigate('/profile') :
+        await loadForeignProfile(e)
         navigate('/profile/foreign')
     }
 
+
     const attending = hike.hikeAtt.map((person) => {
         return (<>
-            <br />  <Link onClick={()=>handleForeignRequest({person})} > {person}</Link> <br />
+            <div className="attending_names">  <Link onClick={() => handleForeignRequest({ person })} > {person}</Link> </div>
 
         </>)
     })
-    // console.log(attending)
-
-
-
 
 
 
     return (
-        <section className="registerCont">
-            {hike.hikeOrigin}
+        <section className="hikesCont">
+
+            From : {hike.hikeOrigin}
             <br />
-            {hike.hikeDestination}
+            To : {hike.hikeDestination}
             <br />
-            {hike.hikeInfo}
+            Additional Information :{hike.hikeInfo}
             <br />
-            <p>People Attending:</p>
-            {attending}
+            Posted by :<div className="attending_names">  <Link onClick={() => handleForeignRequest({ person: hike['hikeOwner'] })}> {hike.hikeOwner}</Link></div>
+            <br />
+            <div className="attending">
+
+                {display ?
+                    <>
+                        <p>Who is going?</p>
+                        {attending} </> : null}
+            </div>
+
 
             <button value={hike._id} onClick={(handleClick)}>View</button>
             <button value={hike._id} onClick={(e) => handleAdd(e)}>Join Hike</button>

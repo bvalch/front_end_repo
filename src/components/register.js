@@ -1,6 +1,5 @@
 import register from '../css/register.css'
-import { useRef, useEffect, useState } from "react";
-// import axios from '../api/axios'
+import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 

@@ -1,6 +1,3 @@
-import { Link, Route } from "react-router-dom";
-import EditProfile from "./EditProfile";
-import { Routes } from 'react-router-dom'
 
 const ProfileDetail = ({ profile }) => {
 

@@ -1,0 +1,12 @@
+.App {
+    background-color:rgb(218, 247, 178);
+    opacity: 0.95;
+    height:100vh;
+    margin-left:20%;
+    margin-right:20%;
+    border: 2px solid rgb(255, 255, 255);
+    width: 60%;
+    border-radius: 20px;
+    /* filter:blur(2px); */
+
+}

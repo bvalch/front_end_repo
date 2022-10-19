@@ -14,7 +14,6 @@ const Hikes = ({ hikes, setHikes,individualHike,loadForeignProfile }) => {
                 const response = await axiosRefresh.get('/hikes', {
                     signal: controller.signal
                 });
-                // console.log(response.data)
                 await setHikes(response.data);
             }
             catch (err) {
@@ -38,12 +37,11 @@ const Hikes = ({ hikes, setHikes,individualHike,loadForeignProfile }) => {
 
 
 
-    return (
-        <section>
-            <button onClick={() => handleClick("crete")}>Create</button>
-
-
-            {hikeElements}
+    return (<section>
+        <section className="create-btn-container">
+            <button className="btn-create"onClick={() => handleClick("crete")}>Create a new Hike!</button>
+        </section>
+        {hikeElements}
 
         </section>
     )

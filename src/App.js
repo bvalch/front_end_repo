@@ -1,3 +1,6 @@
+import '../src/css/main.css';
+
+
 import Register from './components/Register.js'
 import Login from './components/Login.js'
 import { Routes, Route, useNavigate } from 'react-router-dom'
@@ -12,7 +15,6 @@ import HikeElement from './components/HikeElement.js';
 import RequireAuth from './components/RequireAuth.js';
 import LogOut from './components/LogOut.js';
 import ForeignProfile from './components/ForeignProfile.js';
-import useAxiosRefresh from './hooks/useAxiosRefresh.js';
 import { axiosRefresh } from './api/axios.js';
 
 
@@ -29,14 +31,24 @@ function App() {
 
 
   const individualHike = async (e) => {
-    console.log(e)
+    // console.log(e)
     const singleHike = hikes.filter((hike) => hike._id === e)
     console.log(singleHike)
     await setSingleHike(singleHike[0]);
     // await setDisplay('single')
   }
+  // const asd = async (foreignName) => {
+    
+  //   const name = foreignName.person
+  //   // console.log(name)
+  //   try {
+  //     const response = await axiosRefresh.get('/profile/getfprofile/' + name)
+  //     setForeignProfile(response.data)
+
+  //   } catch (err) { console.error(err) }
+
+  // }
   const loadForeignProfile = async (foreignName) => {
-    console.log(foreignName.person);
     const name = foreignName.person
     // console.log(name)
     try {
@@ -67,13 +79,14 @@ function App() {
           />} />
 
           <Route path='hikes/create' element={<CreateHike />} />
+
           <Route path='hikes/:id' element={<HikeElement
             hike={singleHike}
             individualHike={individualHike}
-
-
-
+            display={true}
+            loadForeignProfile={loadForeignProfile}
           />} />
+
           <Route path='profile' element={<Profile
             profile={profile}
             setProfile={setProfile}

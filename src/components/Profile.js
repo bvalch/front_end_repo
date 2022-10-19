@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
-import { redirect, useNavigate, Routes, Route } from "react-router-dom";
+import {Link, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { Link } from "react-router-dom";
-import NavBar from "./Navbar";
-import { Navigate } from "react-router-dom";
 import CreateProfile from "./CreateProfile";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
-import ProfileDetail from "./ProfileDetails";
-import EditProfile from "./EditProfile";
+
 
 const Profile = ({ profile, setProfile }) => {
     // const [profile = false, setProfile] = useState();
