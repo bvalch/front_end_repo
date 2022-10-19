@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom"
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import ForeignProfile from "./ForeignProfile";
 
 const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
     const { auth } = useAuth();
@@ -29,21 +28,20 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
     };
 
     const handleForeignRequest = async (e) => {
-        // console.log(auth.user === e.person)
-
-        // // console.log(auth.user)
-        // console.log(e)
-        // e.person == auth.user ? await navigate('/profile') :
-        await loadForeignProfile(e)
-        navigate('/profile/foreign')
+        await loadForeignProfile(e);
+        navigate('/profile/foreign');
     }
 
 
     const attending = hike.hikeAtt.map((person) => {
-        return (<>
-            <div className="attending_names">  <Link onClick={() => handleForeignRequest({ person })} > {person}</Link> </div>
+        return (
+            <>
+                <div className="attending_names">
+                    <Link onClick={() => handleForeignRequest({ person })} > {person}</Link>
+                </div>
 
-        </>)
+            </>
+        )
     })
 
 
@@ -53,18 +51,27 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
 
             From : {hike.hikeOrigin}
             <br />
+
             To : {hike.hikeDestination}
             <br />
+
             Additional Information :{hike.hikeInfo}
             <br />
+
             Posted by :<div className="attending_names">  <Link onClick={() => handleForeignRequest({ person: hike['hikeOwner'] })}> {hike.hikeOwner}</Link></div>
             <br />
+
+
             <div className="attending">
 
-                {display ?
+                {display
+                    ?
                     <>
                         <p>Who is going?</p>
-                        {attending} </> : null}
+                        {attending}
+                    </>
+
+                    : null}
             </div>
 
 

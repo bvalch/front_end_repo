@@ -3,29 +3,29 @@ import useAuth from "../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 
-const LogOut = () => {
-    const { auth, setAuth } = useAuth();
-    const navigate = useNavigate();
+const LogOut=()=>{
+    const {auth,setAuth} = useAuth();
+    const navigate=useNavigate();
 
-    useEffect(async () => {
+    useEffect( async ()=>{
 
-        try {
-            const response = await axios.get('/logout',
-                {
-                    withCredentials: true
-                }
-
-            )
-            console.log(response)
-
-        } catch (err) { console.error(err) }
+        try{
+        const response = await axios.get('/logout',
+        {
+        withCredentials:true
+        }
+       
+        
+        )
+        
+        }catch(err){console.error(err)}
         setAuth('');
         navigate('/')
+    
+    
+    },[])
 
-
-    }, [])
-
-    return (null)
+    return(null)
 
 
 

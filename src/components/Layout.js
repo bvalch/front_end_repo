@@ -5,18 +5,20 @@ import useAuth from '../hooks/useAuth';
 
 
 const Layout = () => {
-    const {auth} = useAuth()
-    // console.log(auth.user)
+    const { auth } = useAuth()
 
     return (
 
         <main className='App'>
             <section className='message-cont'>
-            {auth.user !== undefined ? `Welcome back ${auth.user} !` : 'Please Log In with your account'}
+
+                {auth.user !== undefined ? `Welcome back ${auth.user} !` : 'Please Log In with your account'}
+
             </section>
+
+
             <Navbar />
 
-            
 
             <Outlet />
 

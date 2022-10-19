@@ -1,4 +1,5 @@
-import register from '../css/register.css'
+import '../css/register.css'
+
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
@@ -22,8 +23,6 @@ const Register = () => {
                 }
             )
             console.log(response.data)
-            // console.log(response.accessToken)
-            // console.log(JSON.stringify(response))
             setUser("")
             setPass("")
             navigate('/login')

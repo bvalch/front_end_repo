@@ -9,10 +9,9 @@ const CreateHike = ({ }) => {
     const [origin, setOrigin] = useState();
     const [destination, setDestination] = useState();
     const [info, setInfo] = useState();
-    const [date, setDate] = useState();
-    const [time, setTime] = useState();
+    // const [date, setDate] = useState();
+    // const [time, setTime] = useState();
 
-    //             JSON.stringify({ origin, destination, info, date, hikeDate:date+" "+'0000'+time }),
 
     const handleSubmit = async (e) => {
         e.preventDefault();

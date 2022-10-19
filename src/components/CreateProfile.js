@@ -3,7 +3,7 @@ import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { useNavigate } from 'react-router-dom'
 
 
-const CreateProfile = ({setProfile,setTrigger}) => {
+const CreateProfile = ({ setProfile, setReRender }) => {
     const axiosRefresh = useAxiosRefresh();
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
@@ -16,16 +16,11 @@ const CreateProfile = ({setProfile,setTrigger}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await axiosRefresh.post('/profile',
-            JSON.stringify({ name, age, info, location }),
-            {
-                // withCredentials: true
-            }
+            JSON.stringify({ name, age, info, location })
         )
-        // console.log(response.data)
         await setProfile(response.data)
-        await setTrigger(true);
-        
-         navigate('/profile')
+        await setReRender(true);
+        navigate('/profile')
     }
 
 
@@ -33,59 +28,59 @@ const CreateProfile = ({setProfile,setTrigger}) => {
 
 
     return (
-    
-    <section>
 
-        <section className="registerCont">
-            <h1>Create profile</h1>
-            <br />
+        <section>
 
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="name">Name</label>
+            <section className="registerCont">
+                <h1>Create profile</h1>
                 <br />
 
-                <input type='text'
-                    id='name'
-                    autoComplete="off"
-                    onChange={(e) => setName(e.target.value)}
-                    value={name}
-                />
-                <br />
-                <label htmlFor="location">Location</label>
-                <br />
+                <form onSubmit={handleSubmit}>
+                    <label htmlFor="name">Name</label>
+                    <br />
 
-                <input type='text'
-                    id='location'
-                    autoComplete="off"
-                    onChange={(e) => setLocation(e.target.value)}
-                    value={location}
-                />
-                <br />
-                <label htmlFor="age">Age:</label>
-                <br />
-                <input type='number'
-                    id='age'
-                    onChange={(e) => setAge(e.target.value)}
-                    value={age}
-                />
-                <br />
-                <label htmlFor="info">Additional info:</label>
-                <br />
-                <input type='textbox'
-                    id='info'
-                    onChange={(e) => setInfo(e.target.value)}
-                    value={info}
-                />
-                <br />
+                    <input type='text'
+                        id='name'
+                        autoComplete="off"
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
+                    />
+                    <br />
+                    <label htmlFor="location">Location</label>
+                    <br />
 
-                <button>Create</button>
-            </form>
+                    <input type='text'
+                        id='location'
+                        autoComplete="off"
+                        onChange={(e) => setLocation(e.target.value)}
+                        value={location}
+                    />
+                    <br />
+                    <label htmlFor="age">Age:</label>
+                    <br />
+                    <input type='number'
+                        id='age'
+                        onChange={(e) => setAge(e.target.value)}
+                        value={age}
+                    />
+                    <br />
+                    <label htmlFor="info">Additional info:</label>
+                    <br />
+                    <input type='textbox'
+                        id='info'
+                        onChange={(e) => setInfo(e.target.value)}
+                        value={info}
+                    />
+                    <br />
+
+                    <button>Create</button>
+                </form>
+
+            </section>
+
+
 
         </section>
-
-
-
-    </section>
     )
 
 

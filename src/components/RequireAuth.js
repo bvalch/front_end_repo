@@ -1,4 +1,4 @@
-import { useLocation, Navigate, Outlet } from 'react-router-dom';
+import { useLocation, Outlet } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
 
 
@@ -7,7 +7,6 @@ const RequireAuth = () => {
     const location = useLocation();
 
     return (
-        // auth?.user ? <Outlet /> : <Navigate to="/login" state={{ from: location }} replace />
         auth.user !== undefined ? <Outlet />:<p>You are not authorized</p> 
     )
 

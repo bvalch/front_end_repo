@@ -1,18 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import useAuth from "../hooks/useAuth";
 import CreateProfile from "./CreateProfile";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 
 
 const Profile = ({ profile, setProfile }) => {
-    // const [profile = false, setProfile] = useState();
-    // console.log(profile)
-    const { auth } = useAuth();
     const navigate = useNavigate();
     const axiosRefresh = useAxiosRefresh();
-    const [trigger = false, setTrigger] = useState();
-    const [edit = false, setEdit] = useState();
+    const [rerender = false, setReRender] = useState();
 
     useEffect(() => {
         const controller = new AbortController();
@@ -31,13 +26,12 @@ const Profile = ({ profile, setProfile }) => {
         return () => {
             controller.abort();
         }
-    }, [setProfile,trigger])
+    }, [setProfile,rerender])
 
     const handleDelete = async () => {
         try {
-            const response = await axiosRefresh.delete('profile/delete',
+            const response = await axiosRefresh.delete('profile/delete'
             )
-            // console.log(response)
             setProfile('')
 
         } catch (err) {
@@ -48,13 +42,10 @@ const Profile = ({ profile, setProfile }) => {
 
 
 
-    // if (auth.user === undefined) {
-    //     return null
-    // }
-    // else 
+   
 
     if (!profile) {
-        return (<CreateProfile profile={profile} setProfile={setProfile} setTrigger={setTrigger}/>)
+        return (<CreateProfile profile={profile} setProfile={setProfile} setReRender={setReRender}/>)
     }
     return (
         <section className='container'>

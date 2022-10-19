@@ -4,12 +4,9 @@ import useAuth from '../hooks/useAuth';
 const NavBar = () => {
     const { auth } = useAuth();
 
-
-
     if (auth.user === undefined) {
         return (
             <section className='nav'>
-                <br />
                 <Link className='link' to="/login">Login</Link>
                 <br />
                 <Link className='link'to="/register" exact>Register</Link>
@@ -21,9 +18,7 @@ const NavBar = () => {
         return (
             <section className='nav'>
 
-                {/* <br />
-                <Link className='link' to="/register">Register</Link> */}
-                <br />
+
                 <Link className='link' to="/logout">Logout</Link>
                 <br />
                 <Link className='link' to="/hikes">Hikes</Link>

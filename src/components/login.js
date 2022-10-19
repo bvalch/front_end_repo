@@ -1,4 +1,3 @@
-// import login from '../css/login.css'
 import { useState, useContext } from "react";
 import  axios  from '../api/axios'
 import useAuth from "../hooks/useAuth";
@@ -7,12 +6,10 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 
 
 const Login = () => {
-    // const setAuth = useContext(AuthContext)
     const {setAuth} = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
 
-    // const from = location.state?.from?.pathname || "/";
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
 
@@ -27,11 +24,8 @@ const Login = () => {
                     withCredentials: true
                 }
             );
-            // console.log(JSON.stringify(response.data));
             const acessToken = response.data.acessToken;
-            // console.log(acessToken)
             setAuth({ user, pass, acessToken });
-            // navigate(from, { replace: true });
             navigate("/")
 
 
