@@ -3,7 +3,7 @@ import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { useNavigate } from 'react-router-dom'
 
 
-const CreateProfile = ({setProfile}) => {
+const CreateProfile = ({setProfile,setTrigger}) => {
     const axiosRefresh = useAxiosRefresh();
     const [name, setName] = useState("");
     const [age, setAge] = useState("");
@@ -22,8 +22,10 @@ const CreateProfile = ({setProfile}) => {
             }
         )
         // console.log(response.data)
-        setProfile(response.data)
-        navigate('/profile')
+        await setProfile(response.data)
+        await setTrigger(true);
+        
+         navigate('/profile')
     }
 
 

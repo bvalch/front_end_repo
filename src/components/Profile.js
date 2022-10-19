@@ -19,9 +19,8 @@ const Profile = ({ profile, setProfile }) => {
         const getData = async () => {
             try {
                 const response = await axiosRefresh.get('profile/getprofile', {
-                    // signal: controller.signal
+                    signal: controller.signal
                 });
-                // console.log(response.data)
                 await setProfile(response.data);
             }
             catch (err) {
@@ -32,16 +31,18 @@ const Profile = ({ profile, setProfile }) => {
         return () => {
             controller.abort();
         }
-    }, [])
+    }, [setProfile,trigger])
 
     const handleDelete = async () => {
         try {
             const response = await axiosRefresh.delete('profile/delete',
             )
-            console.log(response)
+            // console.log(response)
+            setProfile('')
 
-        } catch (err) { 
-            console.error(err) }
+        } catch (err) {
+            console.error(err)
+        }
     }
 
 
@@ -52,7 +53,9 @@ const Profile = ({ profile, setProfile }) => {
     // }
     // else 
 
-    if (!profile) { return (<CreateProfile profile={profile} setProfile={setProfile} />) }
+    if (!profile) {
+        return (<CreateProfile profile={profile} setProfile={setProfile} setTrigger={setTrigger}/>)
+    }
     return (
         <section className='container'>
             <ul>
