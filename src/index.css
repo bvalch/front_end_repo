@@ -45,8 +45,8 @@ body {
   min-width: 80%;
   margin-left: 10%;
   margin-right: 10%;
-  min-height: 100vh;
   border-radius: 20px;
+  min-height: 40%;
 }
 .btn-create{
   margin-top:5vh;

@@ -17,7 +17,6 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
     const handleAdd = async (e) => {
         e.preventDefault();
         const hikeID = e.target.value
-
         try {
             const response = await axiosRefresh.post('/hikes/join',
                 JSON.stringify({ hikeID }),
@@ -25,6 +24,7 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
                     withCredentials: true
                 });
         } catch (err) { console.error(err) }
+        navigate('/hikes')
     };
 
     const handleForeignRequest = async (e) => {
@@ -69,14 +69,15 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
                     <>
                         <p>Who is going?</p>
                         {attending}
+                        <button value={hike._id} onClick={(e) => handleAdd(e)}>Join Hike</button>
+
                     </>
 
-                    : null}
+                    : <button value={hike._id} onClick={(handleClick)}>View</button>
+                }
             </div>
 
 
-            <button value={hike._id} onClick={(handleClick)}>View</button>
-            <button value={hike._id} onClick={(e) => handleAdd(e)}>Join Hike</button>
 
 
         </section>
