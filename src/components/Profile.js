@@ -26,7 +26,7 @@ const Profile = ({ profile, setProfile }) => {
         return () => {
             controller.abort();
         }
-    }, [setProfile,rerender])
+    }, [setProfile, rerender])
 
     const handleDelete = async () => {
         try {
@@ -42,23 +42,24 @@ const Profile = ({ profile, setProfile }) => {
 
 
 
-   
+
 
     if (!profile) {
-        return (<CreateProfile profile={profile} setProfile={setProfile} setReRender={setReRender}/>)
+        return (<CreateProfile profile={profile} setProfile={setProfile} setReRender={setReRender} />)
     }
     return (
-        <section className='container'>
-            <ul>
-                <li>{profile.personName}</li>
-                <li>{profile.personAge}</li>
-                <li>{profile.personLocation}</li>
-                <li>{profile.personInfo}</li>
+        <section className='profileCont'>
+            <h1 className="h1">Profile dashboard</h1>
+            <ul className='ul'>
+                <li className="li"> <text className="text">Full Name :</text> {profile.personName}</li>
+                <li className="li">  <text className="text">Age :</text> {profile.personAge}</li>
+                <li className="li"><text className="text"> Location :</text> {profile.personLocation}</li>
+                <li className="li"><text className="text">Additional :</text> {profile.personInfo}</li>
             </ul>
-
-            <Link to='/edit'>Update</Link>
-            <Link onClick={handleDelete}>Delete</Link>
-
+            <div className="link-cont">
+            <Link className='link slide_left' to='/edit'>I hate it</Link>
+            <Link className='link slide_left' onClick={handleDelete}>I really hate it</Link>
+            </div>
         </section>
 
 

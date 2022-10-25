@@ -4,14 +4,15 @@ import useAuth from '../hooks/useAuth';
 const NavBar = () => {
     const { auth } = useAuth();
 
+    <div class="button_slide slide_left">BUTTON: SLIDE INSIDE </div>
+
     if (auth.user === undefined) {
         return (
             <section className='nav'>
-                <Link className='link' to="/login">Login</Link>
+                <Link className='button_slide slide_left' to="/login">LogIn</Link>
                 <br />
-                <Link className='link'to="/register">Register</Link>
-                <br />
-                <Link className='link'to="/">Home</Link>
+                <Link className='button_slide slide_left' to="/register">Register</Link>
+
             </section>
         )
     } else {
@@ -19,13 +20,14 @@ const NavBar = () => {
             <section className='nav'>
 
 
-                <Link className='link' to="/logout">Logout</Link>
+                <Link className='button_slide slide_left' to="/home">Home</Link>
                 <br />
-                <Link className='link' to="/hikes">Hikes</Link>
+                <Link className='button_slide slide_left' to="/hikes">Hikes</Link>
                 <br />
-                <Link className='link' to="/profile">Profile</Link>
+                <Link className='button_slide slide_left' to="/profile">Profile</Link>
                 <br />
-                <Link className='link' to="/">Home</Link>
+
+                <Link className='button_slide slide_left' to="/logout">Logout</Link>
 
             </section>
 

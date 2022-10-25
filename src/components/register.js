@@ -38,11 +38,9 @@ const Register = () => {
 
     return (
         <section className="registerCont">
-            <h1>Register an account</h1>
-            <br />
-
+            <h1 className="h1">Register an account</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
+                <label className='label' htmlFor="username">Username:</label>
                 <br />
 
                 <input type='text'
@@ -53,7 +51,7 @@ const Register = () => {
                     value={user}
                 />
                 <br />
-                <label htmlFor="password">Password:</label>
+                <label className='label' htmlFor="password">Password:</label>
                 <br />
 
                 <input type='password'
@@ -64,8 +62,7 @@ const Register = () => {
                 />
                 <br />
                 <br />
-
-                <button>Sign Up</button>
+                <button className='btn-create '>Sign Up</button>
             </form>
 
         </section>

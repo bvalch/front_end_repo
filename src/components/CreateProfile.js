@@ -28,15 +28,10 @@ const CreateProfile = ({ setProfile, setReRender }) => {
 
 
     return (
-
-        <section>
-
-            <section className="registerCont">
-                <h1>Create profile</h1>
-                <br />
-
+            <section className="profileCont">
+                <h1 className="h1">Create profile</h1>
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="name">Name</label>
+                    <label className='label' htmlFor="name">Name</label>
                     <br />
 
                     <input type='text'
@@ -46,7 +41,7 @@ const CreateProfile = ({ setProfile, setReRender }) => {
                         value={name}
                     />
                     <br />
-                    <label htmlFor="location">Location</label>
+                    <label className='label' htmlFor="location">Location</label>
                     <br />
 
                     <input type='text'
@@ -56,7 +51,7 @@ const CreateProfile = ({ setProfile, setReRender }) => {
                         value={location}
                     />
                     <br />
-                    <label htmlFor="age">Age:</label>
+                    <label className='label' htmlFor="age">Age:</label>
                     <br />
                     <input type='number'
                         id='age'
@@ -64,23 +59,23 @@ const CreateProfile = ({ setProfile, setReRender }) => {
                         value={age}
                     />
                     <br />
-                    <label htmlFor="info">Additional info:</label>
+                    <label className='label' htmlFor="info">Additional info:</label>
                     <br />
-                    <input type='textbox'
+                    <textarea className='textarea' type='textarea'
                         id='info'
                         onChange={(e) => setInfo(e.target.value)}
                         value={info}
                     />
                     <br />
-
-                    <button>Create</button>
+                    <div className="form-submit-btn-cont">
+                    <button className='btn slide_left '>Create</button>
+                    </div>
                 </form>
 
             </section>
 
 
 
-        </section>
     )
 
 

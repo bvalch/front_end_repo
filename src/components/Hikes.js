@@ -39,13 +39,17 @@ const Hikes = ({ hikes, setHikes, individualHike, loadForeignProfile }) => {
 
     return (
 
-        <section>
+        <section className='top-hike'>
 
-            <section className="create-btn-container">
-                <button className="btn-create" onClick={() => handleClick("crete")}>Create a new Hike!</button>
-            </section>
 
-            {hikeElements}
+            <div className="hike-cont">
+                {hikeElements}
+            </div>
+
+
+            <div className="submit-cont">
+                <button className="link slide_left" onClick={() => handleClick("crete")}>Create a new Hike!</button>
+            </div>
 
         </section>
     )

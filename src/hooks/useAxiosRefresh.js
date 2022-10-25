@@ -20,10 +20,6 @@ const useAxiosRefresh = () => {
             }, (error) => { return Promise.reject(error) }
         );
 
-
-
-
-
         const responseIntercept = axiosRefresh.interceptors.response.use(
             response => { return response },
             async (error) => {

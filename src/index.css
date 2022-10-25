@@ -1,75 +1,310 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+
 body {
   background-image: url("./css/img/forest_bgr.jpg");
-  background-size: cover;
+  background-size: 100% 100%;
   font-family: 'Ubuntu', sans-serif;
 }
-.message-cont{
-  margin-top:3vh;
-  text-align: center;
-  font-size:14px;
+
+.homepage {
+  width: 70%;
+  text-align: left;
+  margin-top: 10%;
+  margin-left: 15%;
+  font-size: 18px;
+  color: white;
+
+}
+
+.message-cont {
+  padding-right: 20px;
+  color: white;
+  margin-top: 3vh;
+  text-align: end;
+  font-size: 14px;
 }
 
 .nav {
   margin-top: 2vh;
   display: flex;
   justify-content: space-evenly;
-  font-size:1.2em;
-  /* background: rgb(6, 142, 4); */
-  /* background-color: #e5e5f7; */
-  /* opacity: 0.8; */
-  /* background: linear-gradient(135deg, #444cf755 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(225deg, #44f7e8 25%, transparent 25%) -10px 0/ 20px 20px, linear-gradient(315deg, #444cf755 25%, transparent 25%) 0px 0/ 20px 20px, linear-gradient(45deg, #444cf7 25%, #e5e5f7 25%) 0px 0/ 20px 20px; */
-  /* background: radial-gradient(circle, rgba(6, 142, 4, 1) 0%, rgba(8, 237, 38, 1) 50%, rgba(0, 121, 6, 1) 100%); */
+  font-size: 1.2em;
+
 }
 
-.link {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  text-decoration: none;
-  padding-top: 0.75rem;
-  background-color: rgb(192, 248, 248);
-  min-width: 10vw;
-  min-height: 5vh;
-  border-radius: 50px;
-  border:2px solid white;
+
+
+
+
+.ul {
+  text-align: left;
+  list-style-type: none;
+
 }
 
-.hikesCont {
-  margin-top:5vh;
-  background-color: #e6f7ea;
-  opacity: 0.8;
-  background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #e6f7ea 10px), repeating-linear-gradient(#45f7a855, #45f7a8);
-  border: 2px solid white;
-  background-color: pink;
-  min-width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
+.text {
+  font-weight: 900;
+  font-size: 18px;
+  ;
+
+}
+
+.textbox {
+  min-height: 10vh;
+  min-width: 25vw;
+
+}
+
+.btn-create {
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  min-width: 120px;
+  min-height: 30px;
+  /* background-color: #e6f7ea; */
   border-radius: 20px;
-  min-height: 40%;
+  font-size: 18px;
 }
-.btn-create{
-  margin-top:5vh;
 
-  min-width: 200px;
-  min-height:30px;
-  background-color: #e6f7ea;
-  opacity: 1;
-  background-image: radial-gradient(circle at center center, #defff0, #e6f7ea), repeating-radial-gradient(circle at center center, #9affd2, #c3fee3, 10px, transparent 40px, transparent 30px);
-  background-blend-mode: multiply;
-  border-radius:20px;
-  font-size:18px;
-}
-.create-btn-container{
+.create-btn-container {
   text-align: center;
   margin-bottom: 20px;
 }
 
 .attending {
-  border: 2px solid black;
-  display: flex;
+  margin-left:1px;
 
 }
+
+.auth-msg {
+  color: white;
+  font-size: xx-large;
+  margin-top: 10%;
+  text-align: center;
+  border-radius: 20px;
+}
+
+
+/* nav buttons */
+.button_slide {
+  /* min-width: 50x; */
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 10px 32px;
+  display: flex;
+  letter-spacing: 0px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #315939;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+/* profile buttons */
+
+.link-cont {
+  display: flex;
+  justify-content: right;
+
+
+}
+
+.link {
+  background: transparent;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 8px 26px;
+  display: flex;
+  letter-spacing: 0px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #315939;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+
+.slide_left:hover {
+  box-shadow: inset 0 0 0 50px #5ea375;
+  border-radius: 15px;
+}
+
+
+.head {
+  display: block;
+  background-image: url("./css/img/banner.jpg");
+  background-size: 100% 100%;
+  min-width: max-content;
+  height: 18.4vh;
+  border: 2px solid white;
+  border-radius: 20px;
+}
+
+.form-submit-btn-cont {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.btn {
+  background-color: transparent;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 8px 26px;
+  display: flex;
+  letter-spacing: 0px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #315939;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+
+.slide_left:hover {
+  box-shadow: inset 0 0 0 50px #5ea375;
+  border-radius: 15px;
+}
+
+.submit-cont {
+  margin-top:10px;
+  display: flex;
+  justify-content: center;
+
+}
+
+/* .hike-cont{
+  max-width:80%;
+  flex-wrap: wrap;
+display:flex;
+} */
+
+.hikesCont {
+  margin-top: 5vh;
+  background-color: #e6f7ea;
+  opacity: 0.8;
+  background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #e6f7ea 10px), repeating-linear-gradient(#45f7a855, #45f7a8);
+  border: 2px solid white;
+  background-color: pink;
+  margin-right: 0;
+  min-width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 20px;
+  max-height: 40%;
+}
+
+.from-to-cont {
+  display: flex;
+  justify-content: space-around;
+}
+
+.from-to {
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.posted-by {
+  display: flex;
+  justify-content: end;
+  font-size: 12px;
+
+}
+
+.posted-by-against-from-to {
+
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.hike-view-btn {
+
+  display: flex;
+  justify-content: end;
+
+  margin-right: 10px;
+
+}
+
+.btn-hike-view {
+  background: yellowgreen;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 2px 12px;
+  display: flex;
+  letter-spacing: 0px;
+  cursor: pointer;
+  box-shadow: inset 0 0 0 0 #315939;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+
+
+}
+
+.hike-info {
+  margin-top: 5px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-left: 5px;
+  margin-right: 15%;
+  min-height: 50px;
+  font-size: 14px;
+
+
+}
+
+.top-hike {
+  max-height: 65%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.who-attends {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.who-attends-v-button {
+  margin-left: 5px;
+  margin-right: 5px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+
+
+
+
+
+
 
 
 
@@ -78,8 +313,6 @@ body {
   /* background-color: pink; */
   /* background-image: url("./css/img/forest_bgr.jpg"); */
   /* filter:blur(10px); */
-
-
 
 }
 

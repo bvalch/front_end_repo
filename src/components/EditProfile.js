@@ -27,54 +27,53 @@ const EditProfile = ({ profile, setProfile, edit }) => {
 
 
     return (
-        <section>
 
-            <section className="registerCont">
-                <h1>Edit profile</h1>
+        <section className="profileCont">
+            <h1 className="h1">Edit profile</h1>
+
+            <form onSubmit={handleSubmit}>
+                <label className='label' htmlFor="name">Name</label>
+                <br />
+                <input type='text'
+                    id='name'
+                    autoComplete="off"
+                    onChange={(e) => setName(e.target.value)}
+                    value={name}
+                />
+                <br />
+                <label className='label' htmlFor="location">Location</label>
                 <br />
 
-                <form onSubmit={handleSubmit}>
-                    <label htmlFor="name">Name</label>
-                    <br />
+                <input type='text'
+                    id='location'
+                    autoComplete="off"
+                    onChange={(e) => setLocation(e.target.value)}
+                    value={location}
+                />
+                <br />
+                <label className='label' htmlFor="age">Age</label>
+                <br />
+                <input type='number'
+                    id='age'
+                    onChange={(e) => setAge(e.target.value)}
+                    value={age}
+                />
+                <br />
+                <label className='label' htmlFor="info">Additional info:</label>
+                <br />
+                <textarea type='textarea'
+                    id='info'
+                    onChange={(e) => setInfo(e.target.value)}
+                    value={info}
+                />
+                <br />
+                <br />
 
-                    <input type='text'
-                        id='name'
-                        autoComplete="off"
-                        onChange={(e) => setName(e.target.value)}
-                        value={name}
-                    />
-                    <br />
-                    <label htmlFor="location">Location</label>
-                    <br />
+                <div className="form-submit-btn-cont">
+                    <button className='btn slide_left '>Save Changes</button>
+                </div>
+            </form>
 
-                    <input type='text'
-                        id='location'
-                        autoComplete="off"
-                        onChange={(e) => setLocation(e.target.value)}
-                        value={location}
-                    />
-                    <br />
-                    <label htmlFor="age">Age</label>
-                    <br />
-                    <input type='number'
-                        id='age'
-                        onChange={(e) => setAge(e.target.value)}
-                        value={age}
-                    />
-                    <br />
-                    <label htmlFor="info">Additional info:</label>
-                    <br />
-                    <input type='textbox'
-                        id='info'
-                        onChange={(e) => setInfo(e.target.value)}
-                        value={info}
-                    />
-                    <br />
-
-                    <button>Update Profile</button>
-                </form>
-
-            </section>
         </section>
 
 

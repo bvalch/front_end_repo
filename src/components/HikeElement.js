@@ -37,7 +37,7 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
         return (
             <>
                 <div className="attending_names">
-                    <Link onClick={() => handleForeignRequest({ person })} > {person}</Link>
+                    <Link onClick={() => handleForeignRequest({ person })} > {person} /  </Link>  
                 </div>
 
             </>
@@ -47,34 +47,42 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
 
 
     return (
+
+
         <section className="hikesCont">
 
-            From : {hike.hikeOrigin}
-            <br />
+            <div className="posted-by-against-from-to">
+                <div className="from-to-cont">
+                    <div className="from-to">
+                        {hike.hikeOrigin}  to {hike.hikeDestination}
+                    </div>
+                </div>
+                <div className='posted-by'>
+                    Posted by :<div className="attending_names">  <Link onClick={() => handleForeignRequest({ person: hike['hikeOwner'] })}> {hike.hikeOwner}</Link></div>
+                </div>
 
-            To : {hike.hikeDestination}
-            <br />
-
-            Additional Information :{hike.hikeInfo}
-            <br />
-
-            Posted by :<div className="attending_names">  <Link onClick={() => handleForeignRequest({ person: hike['hikeOwner'] })}> {hike.hikeOwner}</Link></div>
-            <br />
+            </div>
+            <div className='hike-info'>
+                {hike.hikeInfo}
+            </div>
 
 
             <div className="attending">
-
                 {display
                     ?
                     <>
-                        <p>Who is going?</p>
+                        <div className="who-attends-v-button">
+                        <div className="who-attends">
+                        Who is going : 
                         {attending}
-                        <button value={hike._id} onClick={(e) => handleAdd(e)}>Join Hike</button>
-
+                        </div>
+                        <button className='btn-hike-view slide_left'value={hike._id} onClick={(e) => handleAdd(e)}>Join Hike</button>
+                        </div>
                     </>
 
-                    : <button value={hike._id} onClick={(handleClick)}>View</button>
+                    : <div className='hike-view-btn'> <button className='btn-hike-view slide_left' value={hike._id} onClick={(handleClick)}>View</button></div>
                 }
+
             </div>
 
 

@@ -1,9 +1,53 @@
 .registerCont {
-    border: 2px solid black;
-    margin-left: 10%;
-    margin-top: 10vh;
-    max-width: 80%;
-    background-color: pink;
+
+    align-self: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-left: 25%;
+    margin-top: 5vh;
+    /* max-width: 80%; */
+    width: 50%;
+    /* background-color: pink; */
     text-align: center;
+}
+
+.profileCont {
+
+    align-self: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin-left: 15%;
+    margin-top: 5vh;
+    /* max-width: 80%; */
+    width: 70%;
+    /* background-color: pink; */
+    text-align: center;
+}
+
+.label {
+    color: white;
+
+}
+
+.div {
+    font-size: 18px;
+
+}
+
+
+.h1 {
+    /* margin-top:-15px; */
+    font-size: 24px;
+    ;
+    color: white
+}
+
+.sign-in-btn {
+    border-radius: 20px;
+    margin-bottom: 15px;
+    background-color: white;
+    width: 120px;
+    /* color:white; */
+
 
 }

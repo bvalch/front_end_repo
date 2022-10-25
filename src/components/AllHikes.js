@@ -1,8 +1,6 @@
 import useAuth from "../hooks/useAuth";
 import HikeElement from "./HikeElement";
 
-
-
 const AllHikes = ({ hikes, individualHike }) => {
     const { auth } = useAuth();
     if (hikes === undefined) return (<p>Loading</p>)

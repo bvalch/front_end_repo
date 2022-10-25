@@ -26,7 +26,7 @@ const Login = () => {
             );
             const acessToken = response.data.acessToken;
             setAuth({ user, pass, acessToken });
-            navigate("/")
+            navigate("/home")
 
 
         } catch (err) {
@@ -39,10 +39,10 @@ const Login = () => {
 
 
     return (
-        <div className="registerCont">
-            <h1>Login with your details</h1>
+        <section className="registerCont">
+            <h1 className="h1">Login with your details</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username:</label>
+                <label className='label' htmlFor="username">Username:</label>
                 <br />
                 <input type='text'
                     id='username'
@@ -52,7 +52,7 @@ const Login = () => {
                     value={user}
                 />
                 <br />
-                <label htmlFor="password">Password:</label>
+                <label className='label' htmlFor="password">Password:</label>
                 <br />
 
                 <input type='password'
@@ -62,11 +62,14 @@ const Login = () => {
                     value={pass}
                 />
                 <br />
-                <button>Sign In</button>
+                <br/>
+                <button className='btn-create '>Sign In</button>
+                <br/>
+                <div></div>
 
             </form>
 
-        </div>
+        </section>
 
     )
 

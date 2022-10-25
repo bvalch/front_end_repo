@@ -7,7 +7,8 @@ const RequireAuth = () => {
     const location = useLocation();
 
     return (
-        auth.user !== undefined ? <Outlet />:<p>You are not authorized</p> 
+        auth.user !== undefined ? <Outlet />:<p className='auth-msg'>You are not authorized to view the content of this page. 
+        Please Log In or Register</p> 
     )
 
 };

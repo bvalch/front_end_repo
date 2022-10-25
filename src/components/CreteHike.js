@@ -54,7 +54,7 @@ const CreateHike = ({ }) => {
                     <br />
                     <label htmlFor="info">Additional Information:</label>
                     <br />
-                    <input type='text'
+                    <textarea type='text'
                         id='info'
                         onChange={(e) => setInfo(e.target.value)}
                         value={info}
@@ -78,10 +78,11 @@ const CreateHike = ({ }) => {
                     <br /> */}
                     <br />
                     <br />
-
-                    <button onClick={handleSubmit}>Create</button>
-                    <br />
-                    <button onClick={() => navigate('/hikes')}>Back</button>
+                    <div className="link-cont">
+                        <button className='link slide_left' onClick={handleSubmit}>Create</button>
+                        <br />
+                        <button className='link slide_left' onClick={() => navigate('/hikes')}>Back</button>
+                    </div>
 
                 </form>
 

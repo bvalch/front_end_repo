@@ -1,6 +1,6 @@
 import '../src/css/main.css';
 
-
+import HomePage from './components/HomePage.js'
 import Register from './components/Register.js'
 import Login from './components/Login.js'
 import { Routes, Route, useNavigate } from 'react-router-dom'
@@ -31,28 +31,17 @@ function App() {
 
 
   const individualHike = async (e) => {
-    // console.log(e)
     const singleHike = hikes.filter((hike) => hike._id === e)
     console.log(singleHike)
-    await setSingleHike(singleHike[0]);
-    // await setDisplay('single')
+    setSingleHike(singleHike[0]);
   }
-  // const asd = async (foreignName) => {
-    
-  //   const name = foreignName.person
-  //   // console.log(name)
-  //   try {
-  //     const response = await axiosRefresh.get('/profile/getfprofile/' + name)
-  //     setForeignProfile(response.data)
-
-  //   } catch (err) { console.error(err) }
-
-  // }
+ 
   const loadForeignProfile = async (foreignName) => {
     const name = foreignName.person
-    // console.log(name)
+    console.log(name)
     try {
       const response = await axiosRefresh.get('/profile/getfprofile/' + name)
+      // console.log(response)
       setForeignProfile(response.data)
 
     } catch (err) { console.error(err) }
@@ -62,6 +51,7 @@ function App() {
 
 
   return (
+
     <Routes>
       <Route path='/' element={<Layout />}>
         <Route path='login' element={<Login />} />
@@ -69,6 +59,7 @@ function App() {
         <Route path='logout' element={<LogOut />} />
 
         <Route path='/' element={<RequireAuth />}>
+          <Route path='/home' element={<HomePage />} />
 
           <Route path='hikes' element={<Hikes
             hikes={hikes}
@@ -98,16 +89,11 @@ function App() {
 
           />} />
           <Route path='profile/foreign' element={<ForeignProfile
-          profile={foreignProfile}
+            profile={foreignProfile}
           />} />
 
         </Route>
-
-
       </Route>
-
-
-
     </Routes>
 
 
