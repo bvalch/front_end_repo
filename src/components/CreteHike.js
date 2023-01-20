@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { useNavigate } from "react-router-dom";
+import GoogleMapModal from "./GoogleMapModal";
 import {
   useLoadScript,
   GoogleMap,
@@ -23,6 +24,8 @@ const CreateHike = ({}) => {
     googleMapsApiKey: gMapsApiKEy,
     libraries
   });
+  const [showMap,setShowMap]=useState(false)
+  const [directions,setDirections] = useState();
 
   const [hikeObject, setHikeObject] = useState({
     hikeOrigin: "",
@@ -61,15 +64,39 @@ const CreateHike = ({}) => {
 
 
 
-
   const transportOptions = ["Bus", "Car", "Train"];
   const transportOptionNodes = transportOptions.map((option, i) => {
     return (
-      <option key={i} name="hikeTransport">
+      <option key={i} name="hikeTransport" value={hikeObject.hikeTransport}>
         {option}
       </option>
     );
   });
+
+const calculateRoute=async () =>{
+    const directionService = new google.maps.DirectionsService();
+    const travelOptions ={
+        origin: hikeObject.hikeOrigin,
+        destination : hikeObject.hikeDestination
+    }
+    if(hikeObject.hikeTransport ="Car"){
+        travelOptions.travelMode = google.maps.TravelMode.DRIVING
+    }else{
+        travelOptions.travelMode = google.maps.TravelMode.TRANSIT
+        travelOptions.transitOptions = {
+            modes: [hikeObject.hikeTransport === "Bus" ? google.maps.TransitMode.BUS : google.maps.TransitMode.TRAIN]
+        }
+    }
+    const result = await directionService.route(travelOptions);
+    setDirections(result)
+}
+
+
+//   const handleMapRender=(e)=>{
+//     e.preventDefault();
+//     calculateRoute
+
+//   }
 
   return (
     <section>
@@ -102,8 +129,11 @@ const CreateHike = ({}) => {
           />
           </Autocomplete>
           <br />
-          <label htmlFor="info">Additional Information:</label>
+          <button onClick={calculateRoute} disabled={hikeObject.hikeDestination==="" && hikeObject.hikeOrigin===""}>Preview Route</button>
           <br />
+          <label htmlFor="info">Additional Information:</label>
+         
+          <br/>
           <textarea
             type="text"
             id="info"
@@ -156,6 +186,7 @@ const CreateHike = ({}) => {
           </div>
         </form>
       </section>
+      {directions && <GoogleMapModal directions={directions} />}
     </section>
   );
 };
