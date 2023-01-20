@@ -1,6 +1,12 @@
 import { useState } from "react";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { useNavigate } from 'react-router-dom'
+import {
+    useLoadScript,
+    GoogleMap,
+    Autocomplete,
+    DirectionsRenderer,
+  } from "@react-google-maps/api";
 import "react-datepicker/dist/react-datepicker.css"
 import "../css/create_hike.css"
 
@@ -8,6 +14,10 @@ import "../css/create_hike.css"
 const CreateHike = ({ }) => {
     const axiosRefresh = useAxiosRefresh();
     const navigate = useNavigate();
+    const libraries=["places"]
+    const google=window.google
+    const gMapsApiKEy=process.env.REACT_APP_GMAPS_API_KEY
+    console.log(gMapsApiKEy)
   
     const [hikeObject,setHikeObject]=useState({
 
@@ -16,7 +26,7 @@ const CreateHike = ({ }) => {
         hikeInfo:"",
         hikeTransport:"",
         hikeDate:"",
-        hikeTime:""
+        hikeTime:"",
     })
 
 
@@ -36,15 +46,10 @@ const CreateHike = ({ }) => {
 
 
     const handleHikeParameters=(e)=>{
-        // console.log(e.target.name)
         const hikeObj={...hikeObject}
-        
         hikeObj[e.target.name]=(e.target.value)
         setHikeObject(hikeObj)
-        console.log(hikeObject)
-
-
-
+        // console.log(hikeObject)
     }
 
     const transportOptions=["Bus","Car","Train"]
