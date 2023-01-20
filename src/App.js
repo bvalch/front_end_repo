@@ -16,6 +16,7 @@ import RequireAuth from './components/RequireAuth.js';
 import LogOut from './components/LogOut.js';
 import ForeignProfile from './components/ForeignProfile.js';
 import { axiosRefresh } from './api/axios.js';
+import LoginPersist from './components/LoginPersist';
 
 
 
@@ -58,7 +59,10 @@ function App() {
         <Route path='register' element={<Register />} />
         <Route path='logout' element={<LogOut />} />
 
-        <Route path='/' element={<RequireAuth />}>
+
+
+        <Route element={<LoginPersist />}>
+        <Route  element={<RequireAuth />}>
           <Route path='/home' element={<HomePage />} />
 
           <Route path='hikes' element={<Hikes
@@ -92,6 +96,7 @@ function App() {
             profile={foreignProfile}
           />} />
 
+        </Route>
         </Route>
       </Route>
     </Routes>

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { useNavigate } from 'react-router-dom'
+import "../css/create_hike.css"
 
 
 const CreateHike = ({ }) => {
@@ -30,7 +31,7 @@ const CreateHike = ({ }) => {
     return (
         <section>
 
-            <section className="registerCont">
+            <section className="createHikeCont">
                 <h1>Create Hike</h1>
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="origin">Origin</label>

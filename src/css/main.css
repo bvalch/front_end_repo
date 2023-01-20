@@ -3,10 +3,10 @@
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(108,189,118,1) 60%, rgba(58,84,58,1) 100%);
     opacity: 0.95;
     height: 100vh;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 5%;
+    margin-right: 5%;
     border: 2px solid rgb(255, 255, 255);
-    width: 60%;
+    width: 90%;
     border-radius: 20px;
     /* filter:blur(2px); */
 

@@ -8,7 +8,7 @@ import useAuth from "./useAuth";
 
 const useAxiosRefresh = () => {
     const refresh = useRefreshToken();
-    const { auth, setAuth } = useAuth();
+    const { auth } = useAuth();
 
     useEffect(() => {
         const requestIntercept = axiosRefresh.interceptors.request.use(

@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom'
 import useAuth from '../hooks/useAuth';
+import { useEffect } from 'react';
 
 const NavBar = () => {
+
+    // useEffect(()=>{
+
+    // },[])
     const { auth } = useAuth();
 
     <div class="button_slide slide_left">BUTTON: SLIDE INSIDE </div>
 
-    if (auth.user === undefined) {
+    if (auth.username === undefined) {
         return (
             <section className='nav'>
                 <Link className='button_slide slide_left' to="/login">LogIn</Link>

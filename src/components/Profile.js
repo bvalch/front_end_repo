@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import CreateProfile from "./CreateProfile";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 
 
 const Profile = ({ profile, setProfile }) => {
-    const navigate = useNavigate();
     const axiosRefresh = useAxiosRefresh();
     const [rerender = false, setReRender] = useState();
 
@@ -30,7 +29,7 @@ const Profile = ({ profile, setProfile }) => {
 
     const handleDelete = async () => {
         try {
-            const response = await axiosRefresh.delete('profile/delete'
+             await axiosRefresh.delete('profile/delete'
             )
             setProfile('')
 

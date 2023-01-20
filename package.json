@@ -4,10 +4,11 @@
   "private": true,
   "dependencies": {
     "axios": "^1.1.2",
+    "jwt-decode": "^3.1.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
-    "react-router-dom": "^6.2.1"
+    "react-router-dom": "^6.2.1",
+    "react-scripts": "5.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,7 +29,6 @@
       "not op_mini all"
     ],
     "proxy": "http://localhost:3500",
-
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",

@@ -1,14 +1,14 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import  axios  from '../api/axios'
 import useAuth from "../hooks/useAuth";
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 
 
 
 const Login = () => {
     const {setAuth} = useAuth();
     const navigate = useNavigate();
-    const location = useLocation();
+    // const location = useLocation();
 
     const [user, setUser] = useState("");
     const [pass, setPass] = useState("");
@@ -25,7 +25,7 @@ const Login = () => {
                 }
             );
             const acessToken = response.data.acessToken;
-            setAuth({ user, pass, acessToken });
+            setAuth({ user, acessToken });
             navigate("/home")
 
 
