@@ -40,9 +40,9 @@ const CreateHike = ({}) => {
     return <div>Loading</div>;
   }
 
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(hikeObject);
     // const response = await axiosRefresh.post('/hikes',
     //     JSON.stringify({ origin, destination, info }),
     //     {
@@ -53,7 +53,7 @@ const CreateHike = ({}) => {
   };
 
   const handleHikeParameters = (e) => {
-    console.log(e.target.value);
+    // console.log(e.target.value);
     const hikeObj = { ...hikeObject };
     hikeObj[e.target.name] = e.target.value;
     setHikeObject(hikeObj);
@@ -94,7 +94,6 @@ const CreateHike = ({}) => {
   
 
   return (
-    <section>
       <section className="createHikeCont">
         <h1>Create Hike</h1>
         <form onSubmit={handleSubmit}>
@@ -125,7 +124,7 @@ const CreateHike = ({}) => {
           </Autocomplete>
           <br />
           <button
-            onClick={calculateRoute}
+            onClick={()=>{calculateRoute(); setShowMap(true)}}
             disabled={
               hikeObject.hikeDestination === "" && hikeObject.hikeOrigin === ""
             }
@@ -187,9 +186,20 @@ const CreateHike = ({}) => {
             </button>
           </div>
         </form>
+     
+     {directions && showMap?  <GoogleMapModal directions={directions} setShowMap={setShowMap} showMap={showMap} /> : null}
       </section>
-      {directions && <GoogleMapModal directions={directions} />}
-    </section>
+    //   
+
+
+            
+
+
+
+
+
+
+
   );
 };
 export default CreateHike;
