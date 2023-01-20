@@ -10,22 +10,22 @@ import {
 } from "@react-google-maps/api";
 import "react-datepicker/dist/react-datepicker.css";
 import "../css/create_hike.css";
-const libraries=["places"]
+const libraries = ["places"];
 
 const CreateHike = ({}) => {
   const axiosRefresh = useAxiosRefresh();
   const navigate = useNavigate();
-//   const libraries = ["places"];
+  //   const libraries = ["places"];
   const google = window.google;
   const gMapsApiKEy = process.env.REACT_APP_GMAPS_API_KEY;
   // console.log(gMapsApiKEy)
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: gMapsApiKEy,
-    libraries
+    libraries,
   });
-  const [showMap,setShowMap]=useState(false)
-  const [directions,setDirections] = useState();
+  const [showMap, setShowMap] = useState(false);
+  const [directions, setDirections] = useState();
 
   const [hikeObject, setHikeObject] = useState({
     hikeOrigin: "",
@@ -40,7 +40,6 @@ const CreateHike = ({}) => {
     return <div>Loading</div>;
   }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(hikeObject);
@@ -54,49 +53,45 @@ const CreateHike = ({}) => {
   };
 
   const handleHikeParameters = (e) => {
-    console.log(e.target.value)
+    console.log(e.target.value);
     const hikeObj = { ...hikeObject };
     hikeObj[e.target.name] = e.target.value;
     setHikeObject(hikeObj);
-    console.log(hikeObject)
+    console.log(hikeObject);
   };
-
-
-
 
   const transportOptions = ["Bus", "Car", "Train"];
   const transportOptionNodes = transportOptions.map((option, i) => {
     return (
-      <option key={i} name="hikeTransport" value={hikeObject.hikeTransport}>
+      <option key={i} name="hikeTransport" value={option}>
         {option}
       </option>
     );
   });
 
-const calculateRoute=async () =>{
+  const calculateRoute = async () => {
     const directionService = new google.maps.DirectionsService();
-    const travelOptions ={
-        origin: hikeObject.hikeOrigin,
-        destination : hikeObject.hikeDestination
-    }
-    if(hikeObject.hikeTransport ="Car"){
-        travelOptions.travelMode = google.maps.TravelMode.DRIVING
-    }else{
-        travelOptions.travelMode = google.maps.TravelMode.TRANSIT
-        travelOptions.transitOptions = {
-            modes: [hikeObject.hikeTransport === "Bus" ? google.maps.TransitMode.BUS : google.maps.TransitMode.TRAIN]
-        }
+    const travelOptions = {
+      origin: hikeObject.hikeOrigin,
+      destination: hikeObject.hikeDestination,
+    };
+    if ((hikeObject.hikeTransport === "Car")) {
+      travelOptions.travelMode = google.maps.TravelMode.DRIVING;
+    } else {
+      travelOptions.travelMode = google.maps.TravelMode.TRANSIT;
+      travelOptions.transitOptions = {
+        modes: [
+          hikeObject.hikeTransport === "Bus"
+            ? google.maps.TransitMode.BUS
+            : google.maps.TransitMode.TRAIN,
+        ],
+      };
     }
     const result = await directionService.route(travelOptions);
-    setDirections(result)
-}
+    setDirections(result);
+  };
 
-
-//   const handleMapRender=(e)=>{
-//     e.preventDefault();
-//     calculateRoute
-
-//   }
+  
 
   return (
     <section>
@@ -106,34 +101,41 @@ const calculateRoute=async () =>{
           <label htmlFor="origin">Origin</label>
           <br />
           <Autocomplete>
-          <input
-            type="text"
-            id="origin"
-            name="hikeOrigin"
-            autoComplete="off"
-            onBlur={(e) => handleHikeParameters(e)}
-            defaultValue={hikeObject.hikeOrigin}
-          />
+            <input
+              type="text"
+              id="origin"
+              name="hikeOrigin"
+              autoComplete="off"
+              onBlur={(e) => handleHikeParameters(e)}
+              defaultValue={hikeObject.hikeOrigin}
+            />
           </Autocomplete>
           <br />
           <label htmlFor="destination">Destination</label>
           <br />
-        <Autocomplete>
-          <input
-            type="text"
-            id="destination"
-            name="hikeDestination"
-            autoComplete="off"
-            onBlur={(e) => handleHikeParameters(e)}
-            defaultValue={hikeObject.hikeDestination}
-          />
+          <Autocomplete>
+            <input
+              type="text"
+              id="destination"
+              name="hikeDestination"
+              autoComplete="off"
+              onBlur={(e) => handleHikeParameters(e)}
+              defaultValue={hikeObject.hikeDestination}
+            />
           </Autocomplete>
           <br />
-          <button onClick={calculateRoute} disabled={hikeObject.hikeDestination==="" && hikeObject.hikeOrigin===""}>Preview Route</button>
+          <button
+            onClick={calculateRoute}
+            disabled={
+              hikeObject.hikeDestination === "" && hikeObject.hikeOrigin === ""
+            }
+          >
+            Preview Route
+          </button>
           <br />
           <label htmlFor="info">Additional Information:</label>
-         
-          <br/>
+
+          <br />
           <textarea
             type="text"
             id="info"
