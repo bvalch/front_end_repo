@@ -1,22 +1,24 @@
-import useAuth from "../hooks/useAuth";
-import HikeElement from "./HikeElement";
+//THIS FILE SEEMS TO BE REDUNDANT
 
-const AllHikes = ({ hikes, individualHike }) => {
-    const { auth } = useAuth();
-    if (hikes === undefined) return (<p>Loading</p>)
-    const hikeElements = hikes.map((hike, index) => {
-        return (
-            <HikeElement hike={hike} individualHike={individualHike} />
-        )
+// import useAuth from "../hooks/useAuth";
+// import HikeElement from "./HikeElement";
 
-    })
-    return (
+// const AllHikes = ({ hikes, individualHike }) => {
+//     const { auth } = useAuth();
+//     if (hikes === undefined) return (<p>Loading</p>)
+//     const hikeElements = hikes.map((hike, index) => {
+//         return (
+//             <HikeElement hike={hike} individualHike={individualHike} />
+//         )
 
-        <section>
-            <h1>Hikes</h1>
-            {hikeElements}
-        </section>
+//     })
+//     return (
 
-    )
-};
-export default AllHikes
+//         <section>
+//             <h1>Hikes</h1>
+//             {hikeElements}
+//         </section>
+
+//     )
+// };
+// export default AllHikes

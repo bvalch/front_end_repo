@@ -4,16 +4,18 @@ import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import "../css/hike_element.css"
 
-const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
+const HikeElement = ({ hike, findIndividualHike, loadForeignProfile, display }) => {
     const { auth } = useAuth();
     const navigate = useNavigate();
     const axiosRefresh = useAxiosRefresh();
 
     if (hike === undefined) return <p>Loading</p>
 
-    const handleClick = async (e) => {
-        await individualHike(e.target.value)
-        navigate('/hikes/' + e.target.value)
+    const handleIndividualHike = async (e) => {
+       
+        console.log(hike._id)
+        await findIndividualHike(hike._id)
+        navigate('/hikes/' + hike._id)
     }
     const handleAdd = async (e) => {
         e.preventDefault();
@@ -47,7 +49,7 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
     return (
 
 
-        <section className="hike-element">
+        <section onClick={handleIndividualHike} className="hike-element" style={{backgroundImage:`url(${process.env.PUBLIC_URL+ "/forest.jpg"})`}}>
 
             <div className="posted-by-against-from-to">
                 <div className="from-to-cont">

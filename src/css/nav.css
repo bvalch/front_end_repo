@@ -52,3 +52,11 @@
     justify-content:flex-end;
     margin-right:3%
   }
+  .welcomeback{
+    width:10ch;
+    display:flex;
+    text-align:center;
+    align-items:center;
+    flex-wrap: nowrap;
+    font-size:1.5em;
+  }
