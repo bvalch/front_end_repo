@@ -194,7 +194,7 @@ body {
 display:flex;
 } */
 
-.hikesCont {
+/* .hikesCont {
   margin-top: 5vh;
   background-color: #e6f7ea;
   opacity: 0.8;
@@ -207,7 +207,7 @@ display:flex;
   margin-right: 10%;
   border-radius: 20px;
   max-height: 40%;
-}
+} */
 
 .from-to-cont {
   display: flex;
@@ -266,7 +266,7 @@ display:flex;
 
 }
 
-.hike-info {
+/* .hike-info {
   margin-top: 5px;
   overflow-x: hidden;
   overflow-y: auto;
@@ -276,13 +276,13 @@ display:flex;
   font-size: 14px;
 
 
-}
+} */
 
-.top-hike {
+/* .top-hike {
   max-height: 65%;
   overflow-x: hidden;
   overflow-y: auto;
-}
+} */
 
 .who-attends {
   font-size: 12px;

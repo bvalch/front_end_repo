@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import HikeElement from './HikeElement'
 import { useNavigate } from "react-router-dom";
+import "../css/hikes.css"
 
 const Hikes = ({ hikes, setHikes, individualHike, loadForeignProfile }) => {
     const axiosRefresh = useAxiosRefresh();
@@ -32,6 +33,10 @@ const Hikes = ({ hikes, setHikes, individualHike, loadForeignProfile }) => {
     if (hikes === undefined) return <p>Loading</p>
 
     const hikeElements = hikes.map((hike, index) => { return (<HikeElement key={index} hike={hike} individualHike={individualHike} loadForeignProfile={loadForeignProfile} />) });
+
+
+
+
     const handleClick = () => { navigate('/hikes/create') };
 
 
@@ -39,10 +44,10 @@ const Hikes = ({ hikes, setHikes, individualHike, loadForeignProfile }) => {
 
     return (
 
-        <section className='top-hike'>
+        <section className='hikes'>
 
 
-            <div className="hike-cont">
+            <div className="hike-container">
                 {hikeElements}
             </div>
 

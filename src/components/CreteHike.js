@@ -2,31 +2,22 @@ import { useState } from "react";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { useNavigate } from "react-router-dom";
 import GoogleMapModal from "./GoogleMapModal";
-import {
-  useLoadScript,
-  GoogleMap,
-  Autocomplete,
-  DirectionsRenderer,
-} from "@react-google-maps/api";
+import {useLoadScript,Autocomplete} from "@react-google-maps/api";
 import "react-datepicker/dist/react-datepicker.css";
 import "../css/create_hike.css";
-const libraries = ["places"];
 
 const CreateHike = ({}) => {
   const axiosRefresh = useAxiosRefresh();
   const navigate = useNavigate();
-  //   const libraries = ["places"];
-  const google = window.google;
   const gMapsApiKEy = process.env.REACT_APP_GMAPS_API_KEY;
-  // console.log(gMapsApiKEy)
+  const [libraries,setLibraries] = useState(["places"]);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: gMapsApiKEy,
     libraries,
   });
   const [showMap, setShowMap] = useState(false);
-  const [directions, setDirections] = useState();
-
+  // const [directions, setDirections] = useState();
   const [hikeObject, setHikeObject] = useState({
     hikeOrigin: "",
     hikeDestination: "",
@@ -43,13 +34,13 @@ const CreateHike = ({}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const response = await axiosRefresh.post('/hikes',
-    //     JSON.stringify({ origin, destination, info }),
-    //     {
-    //         withCredentials: true
-    //     }
-    // )
-    // navigate('/hikes')
+    const response = await axiosRefresh.post('/hikes',
+        JSON.stringify(hikeObject),
+        {
+            withCredentials: true
+        }
+    )
+    navigate('/hikes')
   };
 
   const handleHikeParameters = (e) => {
@@ -57,7 +48,7 @@ const CreateHike = ({}) => {
     const hikeObj = { ...hikeObject };
     hikeObj[e.target.name] = e.target.value;
     setHikeObject(hikeObj);
-    console.log(hikeObject);
+    // console.log(hikeObject);
   };
 
   const transportOptions = ["Bus", "Car", "Train"];
@@ -69,27 +60,7 @@ const CreateHike = ({}) => {
     );
   });
 
-  const calculateRoute = async () => {
-    const directionService = new google.maps.DirectionsService();
-    const travelOptions = {
-      origin: hikeObject.hikeOrigin,
-      destination: hikeObject.hikeDestination,
-    };
-    if ((hikeObject.hikeTransport === "Car")) {
-      travelOptions.travelMode = google.maps.TravelMode.DRIVING;
-    } else {
-      travelOptions.travelMode = google.maps.TravelMode.TRANSIT;
-      travelOptions.transitOptions = {
-        modes: [
-          hikeObject.hikeTransport === "Bus"
-            ? google.maps.TransitMode.BUS
-            : google.maps.TransitMode.TRAIN,
-        ],
-      };
-    }
-    const result = await directionService.route(travelOptions);
-    setDirections(result);
-  };
+
 
   
 
@@ -124,7 +95,7 @@ const CreateHike = ({}) => {
           </Autocomplete>
           <br />
           <button
-            onClick={()=>{calculateRoute(); setShowMap(true)}}
+            onClick={(e)=>{e.preventDefault(); setShowMap(true)}}
             disabled={
               hikeObject.hikeDestination === "" && hikeObject.hikeOrigin === ""
             }
@@ -187,9 +158,9 @@ const CreateHike = ({}) => {
           </div>
         </form>
      
-     {directions && showMap?  <GoogleMapModal directions={directions} setShowMap={setShowMap} showMap={showMap} /> : null}
+     {showMap?  <GoogleMapModal origin={hikeObject.hikeOrigin} destination={hikeObject.hikeDestination} setShowMap={setShowMap} showMap={showMap} transport={hikeObject.hikeTransport} /> : null}
       </section>
-    //   
+    
 
 
             

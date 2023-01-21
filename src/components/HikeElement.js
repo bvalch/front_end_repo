@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom"
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import "../css/hike_element.css"
 
 const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
     const { auth } = useAuth();
@@ -18,7 +19,7 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
         e.preventDefault();
         const hikeID = e.target.value
         try {
-            const response = await axiosRefresh.post('/hikes/join',
+            await axiosRefresh.post('/hikes/join',
                 JSON.stringify({ hikeID }),
                 {
                     withCredentials: true
@@ -33,14 +34,11 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
     }
 
 
-    const attending = hike.hikeAtt.map((person) => {
+    const attending = hike.hikeAtt.map((person,i) => {
         return (
-            <>
                 <div className="attending_names">
-                    <Link onClick={() => handleForeignRequest({ person })} > {person} /  </Link>  
+                    <Link key={i} onClick={() => handleForeignRequest({ person })} > {person} /  </Link>  
                 </div>
-
-            </>
         )
     })
 
@@ -49,25 +47,27 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
     return (
 
 
-        <section className="hikesCont">
+        <section className="hike-element">
 
             <div className="posted-by-against-from-to">
                 <div className="from-to-cont">
                     <div className="from-to">
-                        {hike.hikeOrigin}  to {hike.hikeDestination}
+                        {/* {hike.hikeOrigin}  to {hike.hikeDestination}
+                        {hike.hikeDate} at { hike.hikeTime} */}
                     </div>
                 </div>
-                <div className='posted-by'>
-                    Posted by :<div className="attending_names">  <Link onClick={() => handleForeignRequest({ person: hike['hikeOwner'] })}> {hike.hikeOwner}</Link></div>
-                </div>
+                {/* <div className='posted-by'>
+                    Posted by :
+                    <div className="attending_names">  <Link onClick={() => handleForeignRequest({ person: hike['hikeOwner'] })}> {hike.hikeOwner}</Link>
+                    
+                    </div>
+                </div> */}
 
             </div>
-            <div className='hike-info'>
-                {hike.hikeInfo}
-            </div>
+           
 
 
-            <div className="attending">
+            {/* <div className="attending">
                 {display
                     ?
                     <>
@@ -83,7 +83,7 @@ const HikeElement = ({ hike, individualHike, loadForeignProfile, display }) => {
                     : <div className='hike-view-btn'> <button className='btn-hike-view slide_left' value={hike._id} onClick={(handleClick)}>View</button></div>
                 }
 
-            </div>
+            </div> */}
 
 
 

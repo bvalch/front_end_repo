@@ -1,0 +1,22 @@
+.hikes{
+    border:2px solid black;
+    
+    
+
+}
+.hike-container {
+    border: 2px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    height: 60vh;
+    width:100%;
+    overflow-y: scroll;
+    justify-content: space-between;
+    align-items: center;
+    scrollbar-width:thin
+    
+}
+.hike-container::-webkit-scrollbar {
+    width: 5em;
+    background-color: transparent;
+}

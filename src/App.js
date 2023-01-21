@@ -33,7 +33,7 @@ function App() {
 
   const individualHike = async (e) => {
     const singleHike = hikes.filter((hike) => hike._id === e)
-    console.log(singleHike)
+    // console.log(singleHike)
     setSingleHike(singleHike[0]);
   }
  

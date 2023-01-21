@@ -1,0 +1,8 @@
+.hike-element {
+    border: 2px solid black;
+    flex-basis: 150px;
+    min-height: 150px;
+    min-width: 150px;
+    margin: 0;
+    margin-top: 1%;
+}
