@@ -3,7 +3,6 @@
     display: flex;
     justify-content: space-evenly;
     font-size: 0.6em;
-    background-color: pink;
     height:5vh;
   
   }
@@ -23,8 +22,8 @@
     padding: 5px 5px;
   }
   .logo-container{
-    height:100%;
-    width:15%;
+    height:80%;
+    width:13%;
   }
   .logo{
     
@@ -47,4 +46,9 @@
     text-decoration:none;
     color:darkolivegreen;
     font-size:1.5em
+  }
+  .profile-logout{
+    display:flex;
+    justify-content:flex-end;
+    margin-right:3%
   }

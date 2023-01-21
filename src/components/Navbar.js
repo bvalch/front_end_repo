@@ -6,18 +6,7 @@ import logo from "../css/img/logo.png";
 const NavBar = () => {
   const { auth } = useAuth();
 
-  if (auth.username === undefined) {
-    return (
-      <section className="nav">
-        <Link className="button_slide slide_left" to="/login">
-          LogIn
-        </Link>
-        <Link className="button_slide slide_left" to="/register">
-          Register
-        </Link>
-      </section>
-    );
-  } else {
+
     return (
       <section className="nav">
 
@@ -32,23 +21,30 @@ const NavBar = () => {
             <Link className="navlink" to="/home">
               Home
             </Link>
-            <Link className="navlink" to="/hikes">
+            {auth.username &&<Link className="navlink" to="/hikes">
               Hikes
-            </Link>
+            </Link>}
             <Link className="navlink" to="/explore">
               Explore
             </Link>
           </div>
         </div>
-
-        <Link className="button_slide slide_left" to="/profile">
+        <div className="profile-logout">
+            
+         {auth.username ? <><Link className="navlink" to="/profile">
           Profile
         </Link>
-        <Link className="button_slide slide_left" to="/logout">
-          Logout
+        <Link className="navlink" to="/logout">
+            Logout
+        </Link></> : <><Link className="navlink" to="/login">
+          LogIn
         </Link>
+        <Link className="navlink" to="/register">
+            Register
+        </Link></>}
+        </div>
       </section>
     );
-  }
+  
 };
 export default NavBar;
