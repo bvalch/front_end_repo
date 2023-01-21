@@ -10,7 +10,8 @@ const Layout = () => {
 
     return (
         <main className='App'>
-                    <Header/>
+                    {/* <Header/> */}
+                    <Navbar />
 
             <section className='message-cont'>
 
@@ -19,7 +20,7 @@ const Layout = () => {
             </section>
 
 
-            <Navbar />
+           
 
 
             <Outlet />

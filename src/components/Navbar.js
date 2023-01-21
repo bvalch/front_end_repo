@@ -1,43 +1,54 @@
-import { Link } from 'react-router-dom'
-import useAuth from '../hooks/useAuth';
+import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
+import "../css/nav.css";
+import logo from "../css/img/logo.png";
 
 const NavBar = () => {
+  const { auth } = useAuth();
 
-  
-    const { auth } = useAuth();
+  if (auth.username === undefined) {
+    return (
+      <section className="nav">
+        <Link className="button_slide slide_left" to="/login">
+          LogIn
+        </Link>
+        <Link className="button_slide slide_left" to="/register">
+          Register
+        </Link>
+      </section>
+    );
+  } else {
+    return (
+      <section className="nav">
 
-    <div class="button_slide slide_left">BUTTON: SLIDE INSIDE </div>
+        <div className="logo-part-nav">
 
-    if (auth.username === undefined) {
-        return (
-            <section className='nav'>
-                <Link className='button_slide slide_left' to="/login">LogIn</Link>
-                <br />
-                <Link className='button_slide slide_left' to="/register">Register</Link>
+          <div className="logo-container">
+            <img className="logo" src={logo} />
+          </div>
 
-            </section>
-        )
-    } else {
-        return (
-            <section className='nav'>
+          <div className="home-hikes-explore">
 
+            <Link className="navlink" to="/home">
+              Home
+            </Link>
+            <Link className="navlink" to="/hikes">
+              Hikes
+            </Link>
+            <Link className="navlink" to="/explore">
+              Explore
+            </Link>
+          </div>
+        </div>
 
-                <Link className='button_slide slide_left' to="/home">Home</Link>
-                <br />
-                <Link className='button_slide slide_left' to="/hikes">Hikes</Link>
-                <br />
-                <Link className='button_slide slide_left' to="/profile">Profile</Link>
-                <br />
-
-                <Link className='button_slide slide_left' to="/logout">Logout</Link>
-
-            </section>
-
-        )
-    }
-
-
-
-
+        <Link className="button_slide slide_left" to="/profile">
+          Profile
+        </Link>
+        <Link className="button_slide slide_left" to="/logout">
+          Logout
+        </Link>
+      </section>
+    );
+  }
 };
 export default NavBar;
