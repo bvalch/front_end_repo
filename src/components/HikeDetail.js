@@ -55,7 +55,7 @@ const HikeDetail = ({ individualHike }) => {
                 <div className="comments-count">  Comments:0</div>
                 <div className="add-comment" onClick={()=>{setShowCommentBox(!showCommentBox)}}>{!showCommentBox? "AddComment" : "Hide"}</div>
         </div>
-        {showCommentBox && <SendCommentMessage/>}
+        {showCommentBox && <SendCommentMessage hikeId={individualHike._id}/>}
 
        
 
