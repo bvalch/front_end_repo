@@ -24,7 +24,14 @@ const HikeDetail=({individualHike})=>{
                       </div>
              </div>
         </div>
-      
+      <div className="actions-menu">
+            <div className="actoon">Reveal route</div>
+            <div className="actoon">Join</div>
+            <div className="actoon">Message</div>
+
+            
+
+      </div>
 
         <div className="hike-description">{individualHike.hikeInfo}</div>
     </div>)
