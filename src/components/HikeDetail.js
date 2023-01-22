@@ -1,14 +1,19 @@
 import "../css/hikedetail.css";
 import { useState } from "react";
 import GoogleMapModal from "./GoogleMapModal";
+import SendCommentMessage from "./SendCommentMessage";
 
 const HikeDetail = ({ individualHike }) => {
   const [showMap, setShowMap] = useState(false);
   if (individualHike === undefined) return <div> Loading</div>;
 
-  console.log(individualHike);
+//   console.log(individualHike);
   const onRouteReveal=()=>{
     setShowMap(true)
+  }
+
+  const handleAddCommentClick=()=>{
+
   }
 
   return (
@@ -44,6 +49,18 @@ const HikeDetail = ({ individualHike }) => {
 
       <div className="hike-description">{individualHike.hikeInfo}</div>
       { showMap && <GoogleMapModal showMap={showMap} setShowMap={setShowMap} origin={individualHike.hikeOrigin} destination={individualHike.hikeDestination} transport={individualHike.hikeTransport} /> }
+
+      <div className="comments-addcomment-cont">
+                <div className="comments-count">  Comments:0</div>
+                <div className="add-comment">Add comment</div>
+        </div>
+        <SendCommentMessage/>
+
+       
+
+        <div className="comments-container">
+
+        </div>
     </div>
   );
 };

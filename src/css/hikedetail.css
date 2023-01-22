@@ -23,7 +23,7 @@
 .hike-description{
     border:2px solid black;
     width:90%;
-    height:80%;
+    height:40%;
     margin-left:5%;
     margin-top:5%;
 }
@@ -51,4 +51,12 @@
     display:flex;
     flex-direction: row;
     justify-content: space-around;;
+}
+.comments-addcomment-cont{
+    border:2px solid black;
+    display:flex;
+    flex-direction: row;
+    width:90%;
+    margin-left:5%;
+    justify-content: space-between;
 }
