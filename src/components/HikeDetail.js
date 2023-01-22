@@ -5,6 +5,7 @@ import SendCommentMessage from "./SendCommentMessage";
 
 const HikeDetail = ({ individualHike }) => {
   const [showMap, setShowMap] = useState(false);
+  const [showCommentBox,setShowCommentBox]=useState(false)
   if (individualHike === undefined) return <div> Loading</div>;
 
 //   console.log(individualHike);
@@ -52,9 +53,9 @@ const HikeDetail = ({ individualHike }) => {
 
       <div className="comments-addcomment-cont">
                 <div className="comments-count">  Comments:0</div>
-                <div className="add-comment">Add comment</div>
+                <div className="add-comment" onClick={()=>{setShowCommentBox(!showCommentBox)}}>{!showCommentBox? "AddComment" : "Hide"}</div>
         </div>
-        <SendCommentMessage/>
+        {showCommentBox && <SendCommentMessage/>}
 
        
 
