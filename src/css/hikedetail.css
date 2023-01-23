@@ -7,7 +7,7 @@
   scrollbar-width:none
 }
 .from-to-container {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 90%;
   min-height: 3%;
   display: flex;
@@ -15,7 +15,7 @@
   margin-left: 5%;
 }
 .from-to {
-    border:1px solid white;
+    /* border:1px solid white; */
     display:flex;
   font-weight: 800;
   margin-right:2%;
@@ -47,7 +47,7 @@
 }
 
 .actions-menu{
-    border:2px solid orange;
+    /* border:2px solid orange; */
     height:3%;
     width:90%;
     margin-left:5%;
@@ -56,7 +56,7 @@
     justify-content: space-around;;
 }
 .comments-addcomment-cont{
-    border:2px solid black;
+    /* border:2px solid black; */
     display:flex;
     flex-direction: row;
     width:90%;

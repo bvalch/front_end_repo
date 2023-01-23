@@ -44,11 +44,9 @@ const CreateHike = ({}) => {
   };
 
   const handleHikeParameters = (e) => {
-    // console.log(e.target.value);
     const hikeObj = { ...hikeObject };
     hikeObj[e.target.name] = e.target.value;
     setHikeObject(hikeObj);
-    // console.log(hikeObject);
   };
 
   const transportOptions = ["Bus", "Car", "Train"];

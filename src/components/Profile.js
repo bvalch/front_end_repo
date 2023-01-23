@@ -15,6 +15,7 @@ const Profile = ({ profile, setProfile }) => {
                 const response = await axiosRefresh.get('profile/getprofile', {
                     signal: controller.signal
                 });
+                console.log(response.data)
                 await setProfile(response.data);
             }
             catch (err) {

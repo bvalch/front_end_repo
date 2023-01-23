@@ -10,17 +10,31 @@ const CreateProfile = ({ setProfile, setReRender }) => {
     const [info, setInfo] = useState("");
     const [location, setLocation] = useState("");
     const navigate = useNavigate();
+    const [profileBuilder,setProfileBuilder]=useState({
+        personName: "",
+            personAge: "",
+            personInfo: "",
+            personLocation: "",
+    })
 
 
+    const handleProfileBuild=(e)=>{
+        const profileCopy={...profileBuilder}
+        profileCopy[e.target.name]=e.target.value;
+        setProfileBuilder(profileCopy)
 
+        
+
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const response = await axiosRefresh.post('/profile',
-            JSON.stringify({ name, age, info, location })
-        )
-        await setProfile(response.data)
-        await setReRender(true);
-        navigate('/profile')
+        console.log(profileBuilder)
+        // const response = await axiosRefresh.post('/profile',
+        //     JSON.stringify({ name, age, info, location })
+        // )
+        // await setProfile(response.data)
+        // await setReRender(true);
+        // navigate('/profile')
     }
 
 
@@ -36,9 +50,10 @@ const CreateProfile = ({ setProfile, setReRender }) => {
 
                     <input type='text'
                         id='name'
+                        name="personName"
                         autoComplete="off"
-                        onChange={(e) => setName(e.target.value)}
-                        value={name}
+                        onChange={(e) => handleProfileBuild(e)}
+                        value={profileBuilder.personName}
                     />
                     <br />
                     <label className='label' htmlFor="location">Location</label>
@@ -46,25 +61,27 @@ const CreateProfile = ({ setProfile, setReRender }) => {
 
                     <input type='text'
                         id='location'
-                        autoComplete="off"
-                        onChange={(e) => setLocation(e.target.value)}
-                        value={location}
+                        name = "personLocation"
+                        onChange={(e) => handleProfileBuild(e)}
+                        value={profileBuilder.personLocation}
                     />
                     <br />
                     <label className='label' htmlFor="age">Age:</label>
                     <br />
                     <input type='number'
                         id='age'
-                        onChange={(e) => setAge(e.target.value)}
-                        value={age}
+                        name="personAge"
+                        onChange={(e) => handleProfileBuild(e)}
+                        value={profileBuilder.personAge}
                     />
                     <br />
                     <label className='label' htmlFor="info">Additional info:</label>
                     <br />
                     <textarea className='textarea' type='textarea'
                         id='info'
-                        onChange={(e) => setInfo(e.target.value)}
-                        value={info}
+                        name="personInfo"
+                        onChange={(e) => handleProfileBuild(e)}
+                        value={profileBuilder.personInfo}
                     />
                     <br />
                     <div className="form-submit-btn-cont">
