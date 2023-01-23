@@ -2,20 +2,38 @@ import "../css/hikedetail.css";
 import { useState } from "react";
 import GoogleMapModal from "./GoogleMapModal";
 import SendCommentMessage from "./SendCommentMessage";
+import Comments from "./Comments";
+import useAxiosRefresh from "../hooks/useAxiosRefresh";
 
 const HikeDetail = ({ individualHike }) => {
   const [showMap, setShowMap] = useState(false);
   const [showCommentBox,setShowCommentBox]=useState(false)
+  const [showComments, setShowComments]=useState(false)
+  const [comments,setComments]=useState();
+  const axiosRefresh=useAxiosRefresh();
+
   if (individualHike === undefined) return <div> Loading</div>;
+//   console.log(individualHike)
 
 //   console.log(individualHike);
   const onRouteReveal=()=>{
     setShowMap(true)
   }
 
-  const handleAddCommentClick=()=>{
+  const handleShowCommentsClick= async ()=>{
 
-  }
+    try{
+        const response = await axiosRefresh.get("hikes/comment/"+individualHike._id,{    
+        withCredentials:true}
+        )
+        await setComments(response.data)
+        setShowComments(true)
+
+    }catch(err)
+    {console.error(err)}
+
+
+  };
 
   return (
     <div className="hikedetail">
@@ -52,16 +70,17 @@ const HikeDetail = ({ individualHike }) => {
       { showMap && <GoogleMapModal showMap={showMap} setShowMap={setShowMap} origin={individualHike.hikeOrigin} destination={individualHike.hikeDestination} transport={individualHike.hikeTransport} /> }
 
       <div className="comments-addcomment-cont">
-                <div className="comments-count">  Comments:0</div>
+                <div className="comments-count" onClick={handleShowCommentsClick}>{individualHike.hikeComments.length} Comments</div>
                 <div className="add-comment" onClick={()=>{setShowCommentBox(!showCommentBox)}}>{!showCommentBox? "AddComment" : "Hide"}</div>
         </div>
         {showCommentBox && <SendCommentMessage hikeId={individualHike._id}/>}
 
        
-
+{/* 
         <div className="comments-container">
 
-        </div>
+        </div> */}
+        {showComments&&<Comments comments={comments} setShowComments={setShowComments}/>}
     </div>
   );
 };

@@ -1,0 +1,6 @@
+.comments-container {
+  border: 2px solid red;
+  width: 90%;
+  min-height: 10%;
+  margin-left: 5%;
+}
