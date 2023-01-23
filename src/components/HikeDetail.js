@@ -1,16 +1,19 @@
 import "../css/hikedetail.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GoogleMapModal from "./GoogleMapModal";
 import SendCommentMessage from "./SendCommentMessage";
 import Comments from "./Comments";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 
-const HikeDetail = ({ individualHike }) => {
+const HikeDetail = ({ individualHike,setIndividualHike }) => {
   const [showMap, setShowMap] = useState(false);
   const [showCommentBox,setShowCommentBox]=useState(false)
   const [showComments, setShowComments]=useState(false)
   const [comments,setComments]=useState();
   const axiosRefresh=useAxiosRefresh();
+  useEffect(()=>{
+
+  },[comments])
 
   if (individualHike === undefined) return <div> Loading</div>;
 //   console.log(individualHike)
@@ -35,6 +38,32 @@ const HikeDetail = ({ individualHike }) => {
 
 
   };
+
+  const postComment= async (comment)=>{
+    const individualHikeCopy={...individualHike}
+    try {
+      const response = await axiosRefresh.post(
+        "/hikes/comment",
+        JSON.stringify(comment),
+        {
+          withCredentials: true,
+        }
+      )
+      console.log(response.data)
+      individualHikeCopy.hikeComments.push(response.data._id)
+      await setIndividualHike(individualHikeCopy)
+      setShowCommentBox(false)
+
+    } catch (err) {
+      console.log(err);
+    }
+    await handleShowCommentsClick();
+    
+    
+  }
+
+
+
 
   return (
     <div className="hikedetail">
@@ -74,7 +103,8 @@ const HikeDetail = ({ individualHike }) => {
                 <div className="comments-count" onClick={handleShowCommentsClick}>{showComments?"Hide Comments" :individualHike.hikeComments.length+"Comments" }</div>
                 <div className="add-comment" onClick={()=>{setShowCommentBox(!showCommentBox)}}>{!showCommentBox? "AddComment" : "Hide"}</div>
         </div>
-        {showCommentBox && <SendCommentMessage hikeId={individualHike._id}/>}
+
+        {showCommentBox && <SendCommentMessage hikeId={individualHike._id} postComment={postComment}/>}
 
        
 {/* 

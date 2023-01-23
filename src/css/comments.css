@@ -1,6 +1,21 @@
 .comments-container {
-  border: 2px solid red;
-  width: 90%;
+  /* border: 2px solid red; */
+  width: 80%;
   min-height: 10%;
-  margin-left: 5%;
+  margin-left: 10%;
+  margin-top:4%;
+}
+.comment-by-time{
+  border:2px solid black;
+  display:flex;
+  justify-content: space-between;
+  font-size: 0.6em;
+}
+.comment{
+  margin-bottom: 3%;
+  font-size: 0.8em;
+  border-bottom:0.15em dashed darkgreen;
+  border-left:0.15em dashed darkgreen;
+  border-right:0.15em dashed darkgreen;
+
 }

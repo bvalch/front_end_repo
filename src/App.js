@@ -80,6 +80,7 @@ function App() {
           <Route path='hikes/:id' element={<HikeDetail
             individualHike={individualHike}
             loadForeignProfile={loadForeignProfile}
+            setIndividualHike={setIndividualHike}
           />} />
 
           <Route path='profile' element={<Profile
