@@ -31,6 +31,7 @@ const HikeDetail = ({ individualHike }) => {
 
     }catch(err)
     {console.error(err)}
+    setShowComments(!showComments)
 
 
   };
@@ -70,7 +71,7 @@ const HikeDetail = ({ individualHike }) => {
       { showMap && <GoogleMapModal showMap={showMap} setShowMap={setShowMap} origin={individualHike.hikeOrigin} destination={individualHike.hikeDestination} transport={individualHike.hikeTransport} /> }
 
       <div className="comments-addcomment-cont">
-                <div className="comments-count" onClick={handleShowCommentsClick}>{individualHike.hikeComments.length} Comments</div>
+                <div className="comments-count" onClick={handleShowCommentsClick}>{showComments?"Hide Comments" :individualHike.hikeComments.length+"Comments" }</div>
                 <div className="add-comment" onClick={()=>{setShowCommentBox(!showCommentBox)}}>{!showCommentBox? "AddComment" : "Hide"}</div>
         </div>
         {showCommentBox && <SendCommentMessage hikeId={individualHike._id}/>}
