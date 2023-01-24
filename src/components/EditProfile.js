@@ -3,7 +3,7 @@ import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { useNavigate } from 'react-router-dom'
 
 
-const EditProfile = ({ profile, setProfile, edit }) => {
+const EditProfile = ({ profile, setProfile }) => {
   
     const axiosRefresh = useAxiosRefresh();
     const [profileEdit, setProfileEdit] = useState({
@@ -14,9 +14,10 @@ const EditProfile = ({ profile, setProfile, edit }) => {
       });
     const navigate = useNavigate();
     if (profile === undefined || profile===null) return 'Nothing here'
-    const objCopy={...profile}
+
 
     const handleProfileFieldsChange=(e)=>{
+        const objCopy={...profileEdit}
         objCopy[e.target.name]=e.target.value
         setProfileEdit(objCopy)
 

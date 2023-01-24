@@ -1,6 +1,6 @@
 import "../css/comments.css"
 
-const Comments=({comments,setShowComments})=>{
+const Comments=({comments})=>{
     if(comments ===undefined)return < div> Loading</div>
 
     console.log(comments)

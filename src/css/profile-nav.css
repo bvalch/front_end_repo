@@ -1,6 +1,54 @@
-.profile-nav{
-    border:2px solid blue;
-    width:100%;
-    text-decoration:none;
-    
+.profile-nav {
+  /* border: 2px solid blue; */
+  width: 80%;
+  text-decoration: none;
+  margin-left: 10%;
+  margin-top: 5%;
+  min-height: 5vh;
+  display:flex;
+  
 }
+.profile-nav-link {
+  display: flex;  
+  height: 5vh;
+  text-decoration:none;
+  justify-content: center;
+  align-items: center;
+  background-color:rgb(163, 248, 163);
+  padding-right:1%;
+
+}
+.profile-nav-link:focus {
+    background-color:rgb(191, 252, 191);
+  
+  }
+  .profile-nav-link-left {
+    display: flex;  
+    height: 5vh;
+    text-decoration:none;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(163, 248, 163);
+    border-top-left-radius: 10px;
+    border-top-left-radius: 10px;
+    padding-right:1%;
+
+  }
+  .profile-nav-link-right {
+    display: flex;  
+    height: 5vh;
+    text-decoration:none;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(163, 248, 163);
+    border-top-right-radius: 10px;
+
+  }
+  .profile-nav-link-left:focus{
+    background-color:rgb(191, 252, 191);
+
+  }
+  .profile-nav-link-right:focus{
+    background-color:rgb(191, 252, 191);
+
+  }

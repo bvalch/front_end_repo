@@ -2,7 +2,7 @@ import { useState } from "react";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { useNavigate } from "react-router-dom";
 
-const CreateProfile = ({ profile, setProfile }) => {
+const CreateProfile = ({ setProfile }) => {
   const axiosRefresh = useAxiosRefresh();
   const navigate = useNavigate();
   const [profileBuilder, setProfileBuilder] = useState({

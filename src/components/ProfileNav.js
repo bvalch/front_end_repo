@@ -6,12 +6,12 @@ const ProfileNav=({profile})=>{
 
     return (
         <div className="profile-nav">
-            {profile===undefined||profile===null?<Link to="/profile/create" > Create profile </Link>:<Link to="/profile/edit" > Edit profile </Link>}
+            {profile===undefined||profile===null?<Link className="profile-nav-link" to="/profile/create" > Create profile </Link>:<Link className="profile-nav-link-left" to="/profile/edit" > Edit profile </Link>}
 
-            <Link to="/profile/msgs" > Messages </Link>
-            <Link to="/profile/comments" > Comments </Link>
-            <Link to="/profile/hikes" > Hikes </Link>
-            <Link to="/profile" > Profile </Link>
+            <Link className="profile-nav-link" to="/profile/msgs" > Messages </Link>
+            <Link className="profile-nav-link" to="/profile/comments" > Comments </Link>
+            <Link className="profile-nav-link" to="/profile/hikes" > Hikes </Link>
+            <Link className="profile-nav-link-right" tabIndex={0} to="/profile" > Profile </Link>
 
 
 

@@ -22,12 +22,9 @@ import HikeDetail from './components/HikeDetail';
 
 
 function App() {
-
-  const { auth } = useAuth();
-  const navigate = useNavigate();
   const [hikes, setHikes] = useState();
   const [individualHike, setIndividualHike] = useState();
-  const [profile , setProfile] = useState();
+  // const [profile , setProfile] = useState();
   const [foreignProfile, setForeignProfile] = useState();
 
 
@@ -88,8 +85,8 @@ function App() {
           />} />
 
           <Route path='/profile/*' element={<Profile
-            profile={profile}
-            setProfile={setProfile}
+            // profile={profile}
+            // setProfile={setProfile}
           />} />
 
           {/* <Route path='profile/edit' element={<EditProfile
@@ -98,7 +95,7 @@ function App() {
 
           />} /> */}
           <Route path='profile/foreign' element={<ForeignProfile
-            profile={foreignProfile}
+            // profile={foreignProfile}
           />} />
 
 

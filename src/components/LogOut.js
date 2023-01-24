@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "../api/axios";
 
 const LogOut=()=>{
-    const {auth,setAuth} = useAuth();
+    const {setAuth} = useAuth();
     const navigate=useNavigate();
 
     useEffect( async ()=>{
 
         try{
-        const response = await axios.get('/logout',
+        await axios.get('/logout',
         {
         withCredentials:true
         }

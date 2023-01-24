@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import CreateProfile from "./CreateProfile";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { Routes, Route } from "react-router-dom";
@@ -6,10 +6,13 @@ import ProfileLayout from "./ProfileLayout";
 import ProfileDetail from "./ProfileDetail";
 import EditProfile from "./EditProfile";
 
-const Profile = ({ profile, setProfile }) => {
+const Profile = () => {
   const axiosRefresh = useAxiosRefresh();
-
+  const [profile , setProfile] = useState();
+  const [hasFetchedData, setHasFetchedData] = useState(false);
+  
   useEffect(() => {
+
     const controller = new AbortController();
     const getData = async () => {
       
@@ -30,6 +33,9 @@ const Profile = ({ profile, setProfile }) => {
     };
   }, []);
 
+
+
+  //this is to be moved to profiledetail component, dont forget to navigate back to root path
   const handleDelete = async () => {
     try {
       await axiosRefresh.delete("profile/delete");
@@ -45,7 +51,7 @@ const Profile = ({ profile, setProfile }) => {
    
 
     <div>
-        {profile? "here be profile": "here not be profile"}
+        {/* {profile? "here be profile": "here not be profile"} */}
       <Routes>
         <Route path="/" element={<ProfileLayout profile={profile} />}>
             <Route path="/" element ={ <ProfileDetail profile={profile}/>}/>
