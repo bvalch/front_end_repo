@@ -6,7 +6,7 @@ import {  useNavigate } from 'react-router-dom'
 
 
 const Login = () => {
-    const {setAuth} = useAuth();
+    const {auth,setAuth} = useAuth();
     const navigate = useNavigate();
     // const location = useLocation();
 
@@ -25,7 +25,9 @@ const Login = () => {
                 }
             );
             const acessToken = response.data.acessToken;
-            setAuth({ user, acessToken });
+            const userId=response.data.userId
+            console.log(userId)
+            setAuth({ user, acessToken,"userId":userId });
             navigate("/home")
 
 

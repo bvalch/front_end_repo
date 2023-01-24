@@ -7,8 +7,10 @@ import ProfileDetail from "./ProfileDetail";
 import EditProfile from "./EditProfile";
 import Hikes from "./Hikes";
 import UserComments from "./UserComments";
+import useAuth from "../hooks/useAuth";
 
 const Profile = ({hikes,setHikes, findIndividualHike}) => {
+  const {auth}=useAuth();
   const axiosRefresh = useAxiosRefresh();
   const [profile , setProfile] = useState();
   // const [userComments, setUserComments] = useState();
@@ -60,7 +62,7 @@ const Profile = ({hikes,setHikes, findIndividualHike}) => {
 
           <Route path="edit" element={<EditProfile profile={profile} setProfile={setProfile}/>} />
           <Route path="create" element={<CreateProfile setProfile={setProfile} />}/>
-          <Route path ="hikes" element ={ <Hikes whichToDisplay={profile?._id} setHikes={setHikes} hikes={hikes} findIndividualHike={findIndividualHike}/>} />
+          <Route path ="hikes" element ={ <Hikes whichToDisplay={auth.userId} setHikes={setHikes} hikes={hikes} findIndividualHike={findIndividualHike}/>} />
           <Route path ="comments" element={<UserComments findIndividualHike={findIndividualHike} />} />
 
         </Route>

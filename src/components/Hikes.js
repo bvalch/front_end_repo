@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../css/hikes.css";
 
 const Hikes = ({ hikes, setHikes, findIndividualHike, loadForeignProfile,whichToDisplay }) => {
+  console.log(whichToDisplay)
   const axiosRefresh = useAxiosRefresh();
   const navigate = useNavigate();
 
@@ -13,11 +14,13 @@ const Hikes = ({ hikes, setHikes, findIndividualHike, loadForeignProfile,whichTo
     const getData = async () => {
       try {
         let endpoint = whichToDisplay === "all"? "/hikes" : "/hikes/all/"+whichToDisplay
+        console.log(endpoint)
         const response = await axiosRefresh.get(endpoint, {
           signal: controller.signal,
         });
-        // console.log(response.data)
-        await setHikes(response.data)
+        console.log(response.status)
+        if(response.status===204){await setHikes([])}else{
+        await setHikes(response.data)}
         console.log(hikes)
         
       } catch (err) {
