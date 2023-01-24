@@ -1,22 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { useNavigate } from 'react-router-dom'
 
 
 const EditProfile = ({ profile, setProfile, edit }) => {
+  
     const axiosRefresh = useAxiosRefresh();
-    const [name, setName] = useState(profile.personName);
-    const [age, setAge] = useState(profile.personAge);
-    const [info, setInfo] = useState(profile.personInfo);
-    const [location, setLocation] = useState(profile.personLocation);
+    const [profileEdit, setProfileEdit] = useState({
+        personName: profile?.personName,
+        personAge: profile?.personAge,
+        personInfo: profile?.personInfo,
+        personLocation: profile?.personLocation,
+      });
     const navigate = useNavigate();
-    if (profile === undefined) return 'Nothing here'
+    if (profile === undefined || profile===null) return 'Nothing here'
+    const objCopy={...profile}
 
+    const handleProfileFieldsChange=(e)=>{
+        objCopy[e.target.name]=e.target.value
+        setProfileEdit(objCopy)
+
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await axiosRefresh.put('/profile/update',
-            JSON.stringify({ name, age, info, location })
+            JSON.stringify(profileEdit)
 
         )
         await setProfile(response.data)
@@ -36,9 +45,10 @@ const EditProfile = ({ profile, setProfile, edit }) => {
                 <br />
                 <input type='text'
                     id='name'
+                    name="personName"
                     autoComplete="off"
-                    onChange={(e) => setName(e.target.value)}
-                    value={name}
+                    onChange={(e) => handleProfileFieldsChange(e)}
+                    value={profileEdit.personName}
                 />
                 <br />
                 <label className='label' htmlFor="location">Location</label>
@@ -46,25 +56,28 @@ const EditProfile = ({ profile, setProfile, edit }) => {
 
                 <input type='text'
                     id='location'
+                    name="personLocation"
                     autoComplete="off"
-                    onChange={(e) => setLocation(e.target.value)}
-                    value={location}
+                    onChange={(e) => handleProfileFieldsChange(e)}
+                    value={profileEdit.personLocation}
                 />
                 <br />
                 <label className='label' htmlFor="age">Age</label>
                 <br />
                 <input type='number'
                     id='age'
-                    onChange={(e) => setAge(e.target.value)}
-                    value={age}
+                    name="personAge"
+                    onChange={(e) => handleProfileFieldsChange(e)}
+                    value={profileEdit.personAge}
                 />
                 <br />
                 <label className='label' htmlFor="info">Additional info:</label>
                 <br />
                 <textarea type='textarea'
                     id='info'
-                    onChange={(e) => setInfo(e.target.value)}
-                    value={info}
+                    name="personInfo"
+                    onChange={(e) => handleProfileFieldsChange(e)}
+                    value={profileEdit.personInfo}
                 />
                 <br />
                 <br />

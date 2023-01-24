@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import CreateProfile from "./CreateProfile";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 import { Routes, Route } from "react-router-dom";
@@ -57,7 +57,6 @@ const Profile = ({ profile, setProfile }) => {
       </Routes>
 
 
-      {/* {profile&&<ProfileDetail profile={profile} />} */}
     </div>
   );
 };

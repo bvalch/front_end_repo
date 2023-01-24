@@ -6,7 +6,7 @@ const ProfileNav=({profile})=>{
 
     return (
         <div className="profile-nav">
-            {profile===undefined?<Link to="/profile/create" > Create profile </Link>:<Link to="/profile/edit" > Edit profile </Link>}
+            {profile===undefined||profile===null?<Link to="/profile/create" > Create profile </Link>:<Link to="/profile/edit" > Edit profile </Link>}
 
             <Link to="/profile/msgs" > Messages </Link>
             <Link to="/profile/comments" > Comments </Link>
