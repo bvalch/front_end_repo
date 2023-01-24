@@ -5,8 +5,9 @@ import { Routes, Route } from "react-router-dom";
 import ProfileLayout from "./ProfileLayout";
 import ProfileDetail from "./ProfileDetail";
 import EditProfile from "./EditProfile";
+import Hikes from "./Hikes";
 
-const Profile = () => {
+const Profile = ({hikes,setHikes, findIndividualHike}) => {
   const axiosRefresh = useAxiosRefresh();
   const [profile , setProfile] = useState();
   const [hasFetchedData, setHasFetchedData] = useState(false);
@@ -44,20 +45,20 @@ const Profile = () => {
       console.error(err);
     }
   };
-  console.log(profile);
+  // console.log(profile);
 
  
   return (
    
 
     <div>
-        {/* {profile? "here be profile": "here not be profile"} */}
       <Routes>
         <Route path="/" element={<ProfileLayout profile={profile} />}>
             <Route path="/" element ={ <ProfileDetail profile={profile}/>}/>
 
           <Route path="edit" element={<EditProfile profile={profile} setProfile={setProfile}/>} />
           <Route path="create" element={<CreateProfile setProfile={setProfile} />}/>
+          <Route path ="hikes" element ={ <Hikes whichToDisplay={profile?._id} setHikes={setHikes} hikes={hikes} findIndividualHike={findIndividualHike}/>} />
 
         </Route>
       </Routes>

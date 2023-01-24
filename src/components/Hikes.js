@@ -4,7 +4,7 @@ import HikeElement from "./HikeElement";
 import { useNavigate } from "react-router-dom";
 import "../css/hikes.css";
 
-const Hikes = ({ hikes, setHikes, findIndividualHike, loadForeignProfile }) => {
+const Hikes = ({ hikes, setHikes, findIndividualHike, loadForeignProfile,whichToDisplay }) => {
   const axiosRefresh = useAxiosRefresh();
   const navigate = useNavigate();
 
@@ -12,10 +12,14 @@ const Hikes = ({ hikes, setHikes, findIndividualHike, loadForeignProfile }) => {
     const controller = new AbortController();
     const getData = async () => {
       try {
-        const response = await axiosRefresh.get("/hikes", {
+        let endpoint = whichToDisplay === "all"? "/hikes" : "/hikes/all/"+whichToDisplay
+        const response = await axiosRefresh.get(endpoint, {
           signal: controller.signal,
         });
-        await setHikes(response.data);
+        // console.log(response.data)
+        await setHikes(response.data)
+        console.log(hikes)
+        
       } catch (err) {
         console.error(err);
       }

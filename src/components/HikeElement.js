@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import "../css/hike_element.css"
 
-const HikeElement = ({ hike, findIndividualHike, loadForeignProfile, display }) => {
+const HikeElement = ({ hike, findIndividualHike, loadForeignProfile }) => {
     const { auth } = useAuth();
     const navigate = useNavigate();
     const axiosRefresh = useAxiosRefresh();

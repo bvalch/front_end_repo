@@ -4,12 +4,12 @@ import Navbar from './Navbar';
 import useAuth from '../hooks/useAuth';
 
 
-const Layout = () => {
+const Layout = ({setHikes}) => {
     const { auth } = useAuth()
 
     return (
         <main className='App'>
-                    <Navbar />
+                    <Navbar setHikes={setHikes} />
 
             <section className='message-cont'>
 

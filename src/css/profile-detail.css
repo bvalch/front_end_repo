@@ -10,25 +10,32 @@
 }
 
 .profile-info{
-    border:2px solid black;
+    /* border:2px solid black; */
     height:30%;
     display:flex;
     justify-content: space-between;
 }
 .name-etc{
-    border:2px solid white;
+    /* border:2px solid white; */
     height:100%;
-    width:80%;
+    /* width:80%; */
 }
 .avatar{
     border:2px solid red;
-    height:30vh;
-    width:15vw;
+    height:20vh;
+    min-width:15vw;
     overflow-y: visible;
+    width: 100px;
+    height: 100px;
 }
 .profile-description{
-    border:2px solid yellow;
+    /* border:2px solid yellow; */
+    margin-left:3%;
     width:70%;
     height:30%;
 
+}
+ul{
+    list-style: none;
+    font-size: 1em;
 }

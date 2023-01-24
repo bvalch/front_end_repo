@@ -3,15 +3,12 @@ import '../src/css/main.css';
 import HomePage from './components/HomePage.js'
 import Register from './components/Register.js'
 import Login from './components/Login.js'
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import Layout from './components/Layout.js';
 import Hikes from './components/Hikes';
 import Profile from './components/ProfileContainer.js';
-import useAuth from './hooks/useAuth.js';
-import EditProfile from './components/EditProfile.js';
 import { useState } from 'react'
 import CreateHike from './components/CreteHike.js';
-import HikeElement from './components/HikeElement.js';
 import RequireAuth from './components/RequireAuth.js';
 import LogOut from './components/LogOut.js';
 import ForeignProfile from './components/ForeignProfile.js';
@@ -30,7 +27,7 @@ function App() {
 
 
   const findIndividualHike = async (e) => {
-    console.log(e)
+    // console.log(e)
     const singleHike = hikes.filter((hike) => hike._id === e)
     // console.log(singleHike)
     setIndividualHike(singleHike[0]);
@@ -55,7 +52,7 @@ function App() {
     <Routes>
 
 
-      <Route path='/' element={<Layout />}>
+      <Route path='/' element={<Layout setHikes={setHikes} />}>
 
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
@@ -73,6 +70,7 @@ function App() {
             setHikes={setHikes}
             findIndividualHike={findIndividualHike}
             loadForeignProfile={loadForeignProfile}
+            whichToDisplay="all"
 
           />} />
 
@@ -84,7 +82,8 @@ function App() {
             setIndividualHike={setIndividualHike}
           />} />
 
-          <Route path='/profile/*' element={<Profile
+          <Route path='/profile/*' element={<Profile hikes={hikes} setHikes={setHikes}             findIndividualHike={findIndividualHike}
+
             // profile={profile}
             // setProfile={setProfile}
           />} />

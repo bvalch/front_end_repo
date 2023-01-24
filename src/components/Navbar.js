@@ -2,12 +2,31 @@ import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import "../css/nav.css";
 import logo from "../css/img/logo.png";
+import useAxiosRefresh from "../hooks/useAxiosRefresh";
 
 
 
 
-const NavBar = () => {
+const NavBar = ({setHikes}) => {
+  // const axiosRefresh = useAxiosRefresh();
+
+
   const { auth } = useAuth();
+
+  // const handleHikesLinkClikc=async()=>{
+  //   const controller = new AbortController();
+
+  //   try {
+  //     const response = await axiosRefresh.get("/hikes", {
+  //       signal: controller.signal,
+  //     });
+  //     await setHikes(response.data);
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
+
+
 
   return (
     <section className="nav">
@@ -21,7 +40,7 @@ const NavBar = () => {
             Home
           </Link>
           {auth.username && (
-            <Link className="navlink" to="/hikes">
+            <Link className="navlink" to="/hikes" >
               Hikes
             </Link>
           )}
