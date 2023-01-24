@@ -1,10 +1,12 @@
 import "../css/user-comments.css"
 import { useEffect, useState } from "react";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
-import axios from "../api/axios";
-const UserComments =()=>{
+import { useNavigate } from "react-router-dom";
+
+const UserComments =({findIndividualHike})=>{
     const [userComments, setUserComments] = useState();
     const axiosRefresh = useAxiosRefresh();
+    const navigate=useNavigate();
 
     useEffect(()=>{
         const controller = new AbortController();
@@ -24,18 +26,21 @@ const UserComments =()=>{
         controller.abort();
     };
     },[])
-    if(!userComments) return"Loading"
+    if(!userComments || userComments.length===0) return (<div className="user-comments-cont"> You have no comments to display</div>)
+    console.log(userComments)
 
 
     const handleDeleteClick= async (e)=>{
 
-      const commentId = (e.currentTarget.getAttribute("value"))
+      
+      const [commentId,hikeId]=e.currentTarget.getAttribute("value").split(",")
       const commentCopy=userComments.slice();
       const filtered = commentCopy.filter((comm)=>comm._id !==commentId )
+      console.log(filtered)
       try{
         const response = await axiosRefresh.delete("/comment/hike",
         {
-          data: JSON.stringify({"commentId":commentId}),
+          data: JSON.stringify({"commentId":commentId,"hikeId":hikeId}),
           headers: { 'Content-Type': 'application/json' },
           withCredentials:true
         })
@@ -47,8 +52,10 @@ const UserComments =()=>{
 
     }
 
-    const handleViewClick=()=>{
-      console.log("viewin")
+    const handleViewClick= async (e)=>{
+      const hikeId = (e.currentTarget.getAttribute("value"))
+    await findIndividualHike;
+    navigate("/hikes/"+hikeId)
     }
 
 
@@ -61,7 +68,7 @@ const UserComments =()=>{
 
             <div className="date-time">{comment.time}</div>
             <div className="delete-view">
-              <div value={comment._id} onClick={(e)=>handleDeleteClick(e)}>delete</div> <div className="view" calue={comment.hikeToComment}>view</div></div>
+              <div value={[comment._id,comment.hikeToComment]} onClick={(e)=>handleDeleteClick(e)}>delete</div> <div className="view"onClick={(e)=>handleViewClick(e)} value={comment.hikeToComment}>view</div></div>
             
 
             </div>

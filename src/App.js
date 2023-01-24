@@ -3,7 +3,7 @@ import '../src/css/main.css';
 import HomePage from './components/HomePage.js'
 import Register from './components/Register.js'
 import Login from './components/Login.js'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
 import Layout from './components/Layout.js';
 import Hikes from './components/Hikes';
 import Profile from './components/ProfileContainer.js';
@@ -23,6 +23,7 @@ function App() {
   const [individualHike, setIndividualHike] = useState();
   // const [profile , setProfile] = useState();
   const [foreignProfile, setForeignProfile] = useState();
+  const navigate=useNavigate();
 
 
 
@@ -33,13 +34,15 @@ function App() {
     setIndividualHike(singleHike[0]);
   }
  
-  const loadForeignProfile = async (foreignName) => {
-    const name = foreignName.person
-    console.log(name)
+  const loadForeignProfile = async (userId) => {
+    console.log(userId)
+    // const name = foreignName.person
+    // console.log(name)
     try {
-      const response = await axiosRefresh.get('/profile/getfprofile/' + name)
-      // console.log(response)
-      setForeignProfile(response.data)
+      const response = await axiosRefresh.get('/profile/getfprofile/' + userId)
+      console.log(response.data)
+      await setForeignProfile(response.data)
+      navigate("/profile/foreign/"+response.data.profileOwnerId)
 
     } catch (err) { console.error(err) }
 
@@ -93,8 +96,8 @@ function App() {
             setProfile={setProfile}
 
           />} /> */}
-          <Route path='profile/foreign' element={<ForeignProfile
-            // profile={foreignProfile}
+          <Route path='profile/foreign/:id' element={<ForeignProfile
+            profile={foreignProfile}
           />} />
 
 

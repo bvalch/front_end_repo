@@ -22,7 +22,7 @@ const SendCommentMessage = ({ hikeId, postComment }) => {
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}
-          class="input-field"
+          className="input-field"
         ></textarea>
       </div>
 

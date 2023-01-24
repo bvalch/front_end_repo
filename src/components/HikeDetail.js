@@ -5,7 +5,7 @@ import SendCommentMessage from "./SendCommentMessage";
 import Comments from "./Comments";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 
-const HikeDetail = ({ individualHike,setIndividualHike }) => {
+const HikeDetail = ({ individualHike,setIndividualHike,loadForeignProfile }) => {
   const [showMap, setShowMap] = useState(false);
   const [showCommentBox,setShowCommentBox]=useState(false)
   const [showComments, setShowComments]=useState(false)
@@ -14,17 +14,12 @@ const HikeDetail = ({ individualHike,setIndividualHike }) => {
   useEffect(()=>{
 
   },[comments])
-
   if (individualHike === undefined) return <div> Loading</div>;
-//   console.log(individualHike)
 
-//   console.log(individualHike);
   const onRouteReveal=()=>{
     setShowMap(true)
   }
-
   const handleShowCommentsClick= async ()=>{
-
     try{
         const response = await axiosRefresh.get("comment/hike/"+individualHike._id,{    
         withCredentials:true}
@@ -35,8 +30,6 @@ const HikeDetail = ({ individualHike,setIndividualHike }) => {
     }catch(err)
     {console.error(err)}
     setShowComments(!showComments)
-
-
   };
 
   const postComment= async (comment)=>{
@@ -57,10 +50,11 @@ const HikeDetail = ({ individualHike,setIndividualHike }) => {
       console.log(err);
     }
     await handleShowCommentsClick();
-    
-    
   }
-
+const handleRequestProfile=async(e)=>{
+  const userIdToView=(e.currentTarget.getAttribute("value"))
+  await loadForeignProfile(userIdToView)
+}
 
 
 
@@ -84,7 +78,7 @@ const HikeDetail = ({ individualHike,setIndividualHike }) => {
           <div className="date-time-join">
             Transport : {individualHike.hikeTransport}
           </div>
-          <div className="date-time-join">
+          <div className="date-time-join" value={individualHike.hikeOwnerId} onClick={(e)=>handleRequestProfile(e)}>
             Organiser: {individualHike.hikeOwner}
           </div>
         </div>
@@ -106,10 +100,7 @@ const HikeDetail = ({ individualHike,setIndividualHike }) => {
         {showCommentBox && <SendCommentMessage hikeId={individualHike._id} postComment={postComment}/>}
 
        
-{/* 
-        <div className="comments-container">
 
-        </div> */}
         {showComments&&<Comments comments={comments} setShowComments={setShowComments}/>}
     </div>
   );

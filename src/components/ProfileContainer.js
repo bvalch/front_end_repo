@@ -61,7 +61,7 @@ const Profile = ({hikes,setHikes, findIndividualHike}) => {
           <Route path="edit" element={<EditProfile profile={profile} setProfile={setProfile}/>} />
           <Route path="create" element={<CreateProfile setProfile={setProfile} />}/>
           <Route path ="hikes" element ={ <Hikes whichToDisplay={profile?._id} setHikes={setHikes} hikes={hikes} findIndividualHike={findIndividualHike}/>} />
-          <Route path ="comments" element={<UserComments />} />
+          <Route path ="comments" element={<UserComments findIndividualHike={findIndividualHike} />} />
 
         </Route>
       </Routes>
