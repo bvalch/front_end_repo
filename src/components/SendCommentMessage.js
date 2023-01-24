@@ -18,7 +18,7 @@ const SendCommentMessage = ({ hikeId, postComment }) => {
 
   return (
     <div className="add-comment-box">
-      <div class="input-container">
+      <div className="input-container">
         <textarea
           value={comment}
           onChange={(e) => setComment(e.target.value)}

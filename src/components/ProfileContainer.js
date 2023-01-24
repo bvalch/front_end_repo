@@ -6,16 +6,18 @@ import ProfileLayout from "./ProfileLayout";
 import ProfileDetail from "./ProfileDetail";
 import EditProfile from "./EditProfile";
 import Hikes from "./Hikes";
+import UserComments from "./UserComments";
 
 const Profile = ({hikes,setHikes, findIndividualHike}) => {
   const axiosRefresh = useAxiosRefresh();
   const [profile , setProfile] = useState();
+  // const [userComments, setUserComments] = useState();
   const [hasFetchedData, setHasFetchedData] = useState(false);
   
   useEffect(() => {
 
     const controller = new AbortController();
-    const getData = async () => {
+    const getUserProfile = async () => {
       
         try {
           const response = await axiosRefresh.get("profile/getprofile", {
@@ -27,7 +29,7 @@ const Profile = ({hikes,setHikes, findIndividualHike}) => {
           console.error(err);
         }
       }
-      getData().then((data)=>setProfile(data))
+      getUserProfile().then((data)=>setProfile(data))
       return () => {
         controller.abort();
       
@@ -59,6 +61,7 @@ const Profile = ({hikes,setHikes, findIndividualHike}) => {
           <Route path="edit" element={<EditProfile profile={profile} setProfile={setProfile}/>} />
           <Route path="create" element={<CreateProfile setProfile={setProfile} />}/>
           <Route path ="hikes" element ={ <Hikes whichToDisplay={profile?._id} setHikes={setHikes} hikes={hikes} findIndividualHike={findIndividualHike}/>} />
+          <Route path ="comments" element={<UserComments />} />
 
         </Route>
       </Routes>

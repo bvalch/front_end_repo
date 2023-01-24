@@ -26,7 +26,7 @@ const HikeDetail = ({ individualHike,setIndividualHike }) => {
   const handleShowCommentsClick= async ()=>{
 
     try{
-        const response = await axiosRefresh.get("hikes/comment/"+individualHike._id,{    
+        const response = await axiosRefresh.get("comment/hike/"+individualHike._id,{    
         withCredentials:true}
         )
         await setComments(response.data)
@@ -42,8 +42,7 @@ const HikeDetail = ({ individualHike,setIndividualHike }) => {
   const postComment= async (comment)=>{
     const individualHikeCopy={...individualHike}
     try {
-      const response = await axiosRefresh.post(
-        "/hikes/comment",
+      const response = await axiosRefresh.post("/comment/hike",
         JSON.stringify(comment),
         {
           withCredentials: true,

@@ -22,7 +22,13 @@ const ProfileDetail = ({ profile, id }) => {
 
         <div className="avatar"> here be avatar</div>
       </div>
+    <div className="profile-desc-cont">
+
       <div className="profile-description">{profile.personInfo}</div>
+
+      <div className="edit-profile-btn-cont"><div>Edit Profile</div></div>
+
+      </div>
     </div>
   );
 };
