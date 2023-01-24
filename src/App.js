@@ -6,7 +6,7 @@ import Login from './components/Login.js'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import Layout from './components/Layout.js';
 import Hikes from './components/Hikes';
-import Profile from './components/Profile.js';
+import Profile from './components/ProfileContainer.js';
 import useAuth from './hooks/useAuth.js';
 import EditProfile from './components/EditProfile.js';
 import { useState } from 'react'
@@ -27,7 +27,7 @@ function App() {
   const navigate = useNavigate();
   const [hikes, setHikes] = useState();
   const [individualHike, setIndividualHike] = useState();
-  const [profile = false, setProfile] = useState();
+  const [profile , setProfile] = useState();
   const [foreignProfile, setForeignProfile] = useState();
 
 
@@ -56,7 +56,10 @@ function App() {
   return (
 
     <Routes>
+
+
       <Route path='/' element={<Layout />}>
+
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
         <Route path='logout' element={<LogOut />} />
@@ -65,6 +68,7 @@ function App() {
 
         <Route element={<LoginPersist />}>
         <Route  element={<RequireAuth />}>
+
           <Route path='/home' element={<HomePage />} />
 
           <Route path='hikes' element={<Hikes
@@ -83,23 +87,27 @@ function App() {
             setIndividualHike={setIndividualHike}
           />} />
 
-          <Route path='profile' element={<Profile
+          <Route path='/profile/*' element={<Profile
             profile={profile}
             setProfile={setProfile}
           />} />
 
-          <Route path='/edit' element={<EditProfile
+          {/* <Route path='profile/edit' element={<EditProfile
             profile={profile}
             setProfile={setProfile}
 
-          />} />
+          />} /> */}
           <Route path='profile/foreign' element={<ForeignProfile
             profile={foreignProfile}
           />} />
 
+
         </Route>
         </Route>
+
       </Route>
+
+
     </Routes>
 
 

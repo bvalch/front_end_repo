@@ -2,7 +2,6 @@ import main from '../css/main.css'
 import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar';
 import useAuth from '../hooks/useAuth';
-import Header from './Header.js'
 
 
 const Layout = () => {
@@ -10,7 +9,6 @@ const Layout = () => {
 
     return (
         <main className='App'>
-                    {/* <Header/> */}
                     <Navbar />
 
             <section className='message-cont'>
