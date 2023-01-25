@@ -1,8 +1,11 @@
 import "../css/message-modal.css";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
-const MessageModal = ({foreignProfile}) => {
+import useAxiosRefresh from "../hooks/useAxiosRefresh";
+const MessageModal = ({foreignProfile,setOpenMessage}) => {
+    const axiosRefresh=useAxiosRefresh();
     const {auth}=useAuth();
+
     const [message,setMessage]= useState({
         messageSender:"",
         messageRecepient:"",
@@ -15,7 +18,9 @@ const MessageModal = ({foreignProfile}) => {
     })
 
     //TODO:close modal
-  const handleClose = () => {};
+  const handleClose = () => {
+setOpenMessage(false)
+  };
 
 const handleMessgeInput=(e)=>{
     console.log(e.target.value)
@@ -24,12 +29,21 @@ const handleMessgeInput=(e)=>{
     setMessage(messageObjCopy)
 
 }
-  const handleSubmit=(e)=>{
+
+//remember to close modal on complete
+  const handleSubmit= async(e)=>{
     e.preventDefault();
     const dateStamp= new Date().toISOString().split(".")[0].replace("T","/");
     const msgObjCopy={...message,messageSenderId:auth.userId,messageTime:dateStamp, messageRecepient:foreignProfile.profileOwnerId, messageSender:auth.username};
-    
+
     console.log(msgObjCopy)
+    try{
+        const response = await axiosRefresh.post("/message",
+        JSON.stringify(msgObjCopy),{
+            withCredentials:true
+        }
+        )
+    }catch(err){console.error(err)}
 
 
 

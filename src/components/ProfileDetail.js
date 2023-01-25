@@ -4,7 +4,7 @@ import useAuth from "../hooks/useAuth";
 import MessageModal from "./MessageModal";
 
 const ProfileDetail = ({ profile, id }) => {
-  const [openMessage,setOpenMessage]=useState(true);
+  const [openMessage,setOpenMessage]=useState(false);
   const {auth}=useAuth();
   
 
@@ -13,6 +13,7 @@ const ProfileDetail = ({ profile, id }) => {
   }
 
   const handleMmessageClick= async()=>{
+    setOpenMessage(true)
 
 
   }
@@ -35,10 +36,12 @@ const ProfileDetail = ({ profile, id }) => {
 
       <div className="profile-description">{profile.personInfo}</div>
 
-      <div className="edit-profile-btn-cont"><div>{profile.profileOwnerAlias===auth.username? "Edit Profile": " Message"}</div></div>
 
+    {profile.profileOwnerAlias===auth.username?      <div className="edit-profile-btn-cont"><div>Edit</div></div>
+ :      <div className="edit-profile-btn-cont" onClick={handleMmessageClick}><div>Message</div></div>
+}
       </div>
-      {openMessage&&<MessageModal foreignProfile={profile}/>}
+      {openMessage&&<MessageModal foreignProfile={profile} setOpenMessage={setOpenMessage}/>}
     </div>
   );
 };
