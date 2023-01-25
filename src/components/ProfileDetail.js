@@ -1,11 +1,21 @@
+import { useState } from "react";
 import "../css/profile-detail.css";
+import useAuth from "../hooks/useAuth";
+import MessageModal from "./MessageModal";
 
 const ProfileDetail = ({ profile, id }) => {
+  const [openMessage,setOpenMessage]=useState(true);
+  const {auth}=useAuth();
+  
+
   if (profile === undefined || profile === null) {
     return "Loading";
   }
-  // console.log(profile);
 
+  const handleMmessageClick= async()=>{
+
+
+  }
   return (
     <div className="profile-detail">
 
@@ -19,15 +29,16 @@ const ProfileDetail = ({ profile, id }) => {
             </li>
           </ul>
         </div>
-        <div className="avatar" style={{backgroundImage:`url(${process.env.PUBLIC_URL+ profile.profilePhoto})`}}> </div>
+        <div className="avatar" style={{backgroundImage:`url(${process.env.PUBLIC_URL+"/photo/"+profile.profilePhoto})`}}> </div>
       </div>
     <div className="profile-desc-cont">
 
       <div className="profile-description">{profile.personInfo}</div>
 
-      <div className="edit-profile-btn-cont"><div>Edit Profile</div></div>
+      <div className="edit-profile-btn-cont"><div>{profile.profileOwnerAlias===auth.username? "Edit Profile": " Message"}</div></div>
 
       </div>
+      {openMessage&&<MessageModal foreignProfile={profile}/>}
     </div>
   );
 };

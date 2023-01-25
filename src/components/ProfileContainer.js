@@ -9,7 +9,7 @@ import Hikes from "./Hikes";
 import UserComments from "./UserComments";
 import useAuth from "../hooks/useAuth";
 
-const Profile = ({hikes,setHikes, findIndividualHike}) => {
+const Profile = ({hikes,setHikes, findIndividualHike, loadForeignProfile, foreignProfile}) => {
   const {auth}=useAuth();
   const axiosRefresh = useAxiosRefresh();
   const [profile , setProfile] = useState();
@@ -58,7 +58,7 @@ const Profile = ({hikes,setHikes, findIndividualHike}) => {
     <div>
       <Routes>
         <Route path="/" element={<ProfileLayout profile={profile} />}>
-            <Route path="/" element ={ <ProfileDetail profile={profile}/>}/>
+            <Route path="/" element ={ <ProfileDetail profile={profile} />}/>
 
           <Route path="edit" element={<EditProfile profile={profile} setProfile={setProfile}/>} />
           <Route path="create" element={<CreateProfile setProfile={setProfile} />}/>

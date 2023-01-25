@@ -15,6 +15,7 @@ import ForeignProfile from './components/ForeignProfile.js';
 import { axiosRefresh } from './api/axios.js';
 import LoginPersist from './components/LoginPersist';
 import HikeDetail from './components/HikeDetail';
+import ProfileDetail from './components/ProfileDetail';
 
 
 
@@ -96,7 +97,7 @@ function App() {
             setProfile={setProfile}
 
           />} /> */}
-          <Route path='profile/foreign/:id' element={<ForeignProfile
+          <Route path='profile/foreign/:id' element={<ProfileDetail
             profile={foreignProfile}
           />} />
 

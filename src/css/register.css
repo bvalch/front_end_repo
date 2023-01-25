@@ -1,13 +1,11 @@
-.registerCont {
+/* .registerCont {
 
     align-self: center;
     border: 1px solid white;
     border-radius: 5px;
     margin-left: 0%;
     margin-top: 5vh;
-    /* max-width: 80%; */
     width: 100%;
-    /* background-color: pink; */
     text-align: center;
 }
 
@@ -18,9 +16,7 @@
     border-radius: 5px;
     margin-left: 15%;
     margin-top: 5vh;
-    /* max-width: 80%; */
     width: 70%;
-    /* background-color: pink; */
     text-align: center;
 }
 
@@ -36,7 +32,6 @@
 
 
 .h1 {
-    /* margin-top:-15px; */
     font-size: 24px;
     ;
     color: white
@@ -47,7 +42,6 @@
     margin-bottom: 15px;
     background-color: white;
     width: 120px;
-    /* color:white; */
 
 
-}
+} */

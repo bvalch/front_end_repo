@@ -22,13 +22,12 @@
   /* width:80%; */
 }
 .avatar {
-  border: 2px solid red;
-  height: 20vh;
-  min-width: 15vw;
+  /* border: 2px solid red; */
   overflow-y: visible;
-  width: 100px;
-  height: 100px;
-  background-size:cover
+  width: 150px;
+  height: 150px;
+  background-size:cover;
+  border-top-right-radius: 10px;
 }
 .profile-description {
   /* border: 2px solid yellow; */
