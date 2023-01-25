@@ -26,7 +26,7 @@ const EditProfile = ({ profile, setProfile }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const response = await axiosRefresh.put('/profile/update',
-            JSON.stringify(profileEdit)
+            JSON.stringify({...profileEdit,profileOwnerId:profile.profileOwnerId})
 
         )
         await setProfile(response.data)

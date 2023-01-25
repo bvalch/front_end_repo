@@ -28,6 +28,7 @@
   overflow-y: visible;
   width: 100px;
   height: 100px;
+  background-size:cover
 }
 .profile-description {
   /* border: 2px solid yellow; */

@@ -19,8 +19,7 @@ const ProfileDetail = ({ profile, id }) => {
             </li>
           </ul>
         </div>
-
-        <div className="avatar"> here be avatar</div>
+        <div className="avatar" style={{backgroundImage:`url(${process.env.PUBLIC_URL+ profile.profilePhoto})`}}> </div>
       </div>
     <div className="profile-desc-cont">
 
