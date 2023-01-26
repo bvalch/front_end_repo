@@ -58,7 +58,7 @@ const Profile = ({hikes,setHikes, findIndividualHike, loadForeignProfile, foreig
     <div>
       <Routes>
         <Route path="/" element={<ProfileLayout profile={profile} />}>
-            <Route path="/" element ={ <ProfileDetail profile={profile} />}/>
+            <Route path="/" element ={ <ProfileDetail profile={profile}/>}/>
 
           <Route path="edit" element={<EditProfile profile={profile} setProfile={setProfile}/>} />
           <Route path="create" element={<CreateProfile setProfile={setProfile} />}/>

@@ -2,7 +2,9 @@ import "../css/message-modal.css";
 import { useState } from "react";
 import useAuth from "../hooks/useAuth";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
+import { useNavigate } from "react-router-dom";
 const MessageModal = ({foreignProfile,setOpenMessage}) => {
+    const navigate = useNavigate();
     const axiosRefresh=useAxiosRefresh();
     const {auth}=useAuth();
 
@@ -17,13 +19,11 @@ const MessageModal = ({foreignProfile,setOpenMessage}) => {
 
     })
 
-    //TODO:close modal
   const handleClose = () => {
-setOpenMessage(false)
+    setOpenMessage(false)
   };
 
 const handleMessgeInput=(e)=>{
-    console.log(e.target.value)
     const messageObjCopy={...message}
     messageObjCopy[e.target.name]=e.target.value;
     setMessage(messageObjCopy)
@@ -35,8 +35,6 @@ const handleMessgeInput=(e)=>{
     e.preventDefault();
     const dateStamp= new Date().toISOString().split(".")[0].replace("T","/");
     const msgObjCopy={...message,messageSenderId:auth.userId,messageTime:dateStamp, messageRecepient:foreignProfile.profileOwnerId, messageSender:auth.username};
-
-    console.log(msgObjCopy)
     try{
         const response = await axiosRefresh.post("/message",
         JSON.stringify(msgObjCopy),{
@@ -44,9 +42,7 @@ const handleMessgeInput=(e)=>{
         }
         )
     }catch(err){console.error(err)}
-
-
-
+     setOpenMessage(false)
   }
 
 
@@ -57,7 +53,6 @@ const handleMessgeInput=(e)=>{
       <p className="close" onClick={handleClose}>
           X
         </p>
-        
         <div className="message-box">
         <form onSubmit={handleSubmit}>
 

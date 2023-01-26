@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../css/profile-detail.css";
 import useAuth from "../hooks/useAuth";
 import MessageModal from "./MessageModal";
@@ -6,14 +6,13 @@ import MessageModal from "./MessageModal";
 const ProfileDetail = ({ profile, id }) => {
   const [openMessage,setOpenMessage]=useState(false);
   const {auth}=useAuth();
-  
 
   if (profile === undefined || profile === null) {
     return "Loading";
   }
 
-  const handleMmessageClick= async()=>{
-    setOpenMessage(true)
+  const handleMmessageClick= ()=>{
+    setOpenMessage(!openMessage)
 
 
   }
