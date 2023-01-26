@@ -1,13 +1,85 @@
-.messages-container{
-   
-        width: 80%;
-        margin-left: 10%;
-        min-height: 50vh;
-        border-top: none;
-        background-color: rgb(191, 252, 191);
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-      
-      
+/* //ALL */
+.messages-container {
+  width: 80%;
+  margin-left: 10%;
+  min-height: 50vh;
+  border-top: none;
+  background-color: rgb(191, 252, 191);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding-top: 1%;
+  
+}
+.message-nodes {
+  border: 2px solid black;
+  padding-top: 1%;
+  margin-bottom: 1%;
+  width: 60%;
+  margin-left: 20%;
+  
+}
+
+.new-messages {
+  border: 2px solid yellow;
+}
+
+.date-sender-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+/* SINGLE */
+
+.whole-message-cont{
+        margin-left:20%;
+        border:2px solid black;
+        min-height:50vh;
+        max-height:50vh;
+        width:60%;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        overflow-y:scroll;
+        scrollbar-width: none;
+        
+
+        
+        
+
+}
+.reply-back{
+        border:2px solid red;
+        display:flex;
+        flex-direction:row;
+        justify-content: space-between;
+        
+}
+.reply{
+margin-right:2%;
+}
+.back{
+margin-left:2%;
+}
+.message-body{
+        border:2px solid yellow;
+        min-height:40vh;
+        align-self:center;
+        
+}
+.title-sender-time{
+        display:flex;
+        justify-content: space-between;
+        
+}
+.message-text{
+        border:2px solid black;
+
+}
+.reply-container{
+        border:2px solid orange;
+        width:60%;
+        margin-left:20%;
+        
 }
