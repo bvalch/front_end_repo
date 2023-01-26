@@ -51,7 +51,7 @@ const Hikes = ({ hikes, setHikes, findIndividualHike, loadForeignProfile,whichTo
   };
 
   return (
-    <section className="hikes" style={{backgroundImage:"url('../css/img/forest.jpg')"}}>
+    <section className="hikes">
         
 
       <div className="submit-cont">

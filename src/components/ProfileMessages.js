@@ -20,7 +20,6 @@ const ProfileMessages = () => {
       const response = await axiosRefresh.get("message", {
         withCredentials: true,
       });
-      console.log(response.data);
       const sent = response.data.sent;
       const recieved = response.data.recieved;
       setSentMessageThreads(sent);
@@ -33,13 +32,12 @@ const ProfileMessages = () => {
 
   useEffect(() => {
     getAllMessageThreads();
-  }, []);
+  }, [displaySingle]);
 
   const handleDisplaySingle = async (e) => {
     const threadId = e.target.getAttribute("value");
     const singleThread = allMessageThreads.filter((thread) => thread.messageThreadId === threadId);
-    // console.log(singleThread);
-    //update message boolean in DB
+   
     try{
         await axiosRefresh.put("/message/"+singleThread[0]._id,JSON.stringify({"username":auth.username}),{
             withCredentials:true
@@ -69,7 +67,8 @@ const ProfileMessages = () => {
           >
             {cnt !== 0 ? cnt + " unread" : "no unread "}{" "}
           </div>
-          <div>From Sender</div>
+          <div>From {msgThr.messageThreadParties[0].userName}</div>
+
         </div>
       </div>
     );

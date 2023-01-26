@@ -32,7 +32,8 @@ const MessageThreadDetail = ({ messageThread, setDisplaySingle }) => {
         </div>
       </div>
     );
-  });
+  }).reverse();
+  
   const handleMessgeInput = (e) => {
     const messageObjCopy={...message}
     messageObjCopy[e.target.name]=e.target.value;

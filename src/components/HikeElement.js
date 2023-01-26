@@ -49,7 +49,7 @@ const HikeElement = ({ hike, findIndividualHike, loadForeignProfile }) => {
     return (
 
 
-        <section onClick={handleIndividualHike} className="hike-element" style={{backgroundImage:`url(${process.env.PUBLIC_URL+ "/forest.jpg"})`}}>
+        <section onClick={handleIndividualHike} className="hike-element" style={{backgroundImage:`url(${process.env.PUBLIC_URL+"/cover/"+ hike.hikeCover})`, backgroundSize:"cover"}}>
 
             
            
