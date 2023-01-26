@@ -8,6 +8,7 @@ import EditProfile from "./EditProfile";
 import Hikes from "./Hikes";
 import UserComments from "./UserComments";
 import useAuth from "../hooks/useAuth";
+import ProfileMessages from "./ProfileMessages";
 
 const Profile = ({hikes,setHikes, findIndividualHike, loadForeignProfile, foreignProfile}) => {
   const {auth}=useAuth();
@@ -64,6 +65,7 @@ const Profile = ({hikes,setHikes, findIndividualHike, loadForeignProfile, foreig
           <Route path="create" element={<CreateProfile setProfile={setProfile} />}/>
           <Route path ="hikes" element ={ <Hikes whichToDisplay={auth.userId} setHikes={setHikes} hikes={hikes} findIndividualHike={findIndividualHike}/>} />
           <Route path ="comments" element={<UserComments findIndividualHike={findIndividualHike} />} />
+          <Route path="messages" element ={<ProfileMessages />} />
 
         </Route>
       </Routes>

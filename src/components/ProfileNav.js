@@ -8,7 +8,7 @@ const ProfileNav=({profile})=>{
         <div className="profile-nav">
             {profile===undefined||profile===null?<Link className="profile-nav-link" to="/profile/create" > Create profile </Link>:<Link className="profile-nav-link-left" to="/profile/edit" > Edit profile </Link>}
 
-            <Link className="profile-nav-link" to="/profile/msgs" > Messages </Link>
+            <Link className="profile-nav-link" to="/profile/messages" > Messages </Link>
             <Link className="profile-nav-link" to="/profile/comments" > Comments </Link>
             <Link className="profile-nav-link" to="/profile/hikes" > Hikes </Link>
             <Link className="profile-nav-link-right" tabIndex={0} to="/profile" > Profile </Link>

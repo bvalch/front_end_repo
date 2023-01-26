@@ -1,5 +1,6 @@
 .createHikeCont{
     border:2px solid black;
+    width:80%;
 }
 .createHikeCont>h1{
 text-align: center;
