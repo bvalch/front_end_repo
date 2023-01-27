@@ -75,10 +75,13 @@ const CreateHike = ({}) => {
     <section className="createHikeCont">
       <h1>Create Hike</h1>
       <form onSubmit={handleSubmit}>
+
+        <div className="origin-dest-inputs">
         <label htmlFor="origin">Origin</label>
         <br />
-        <Autocomplete>
+        <Autocomplete >
           <input
+          className="orig-input"
             type="text"
             id="origin"
             name="hikeOrigin"
@@ -92,6 +95,8 @@ const CreateHike = ({}) => {
         <br />
         <Autocomplete>
           <input
+                    className="orig-input"
+
             type="text"
             id="destination"
             name="hikeDestination"
@@ -112,18 +117,24 @@ const CreateHike = ({}) => {
         >
           Preview Route
         </button>
+        </div>
+
         <br />
+        <div className="additional-input">
         <label htmlFor="info">Additional Information:</label>
 
         <br />
         <textarea
+                            className="orig-input"
+
           type="text"
           id="info"
           name="hikeInfo"
           onChange={(e) => handleHikeParameters(e)}
           value={hikeObject.hikeInfo}
         />
-
+    </div>
+    <div className="transport-date"> 
         <label htmlFor="modeOfTransport">Transport</label>
         <select name="hikeTransport" onChange={(e) => handleHikeParameters(e)}>
           <option>----</option>
@@ -152,6 +163,7 @@ const CreateHike = ({}) => {
           value={hikeObject.hikeTime}
         />
         <br />
+        </div>
 
         <div className="input-file">
           <label htmlFor="photo" className="label">
@@ -170,12 +182,12 @@ const CreateHike = ({}) => {
         <br />
         <br />
         <div className="link-cont">
-          <button className="link slide_left" onClick={handleSubmit}>
+          <button className="btn-create-hike " onClick={handleSubmit}>
             Create
           </button>
           <br />
           <button
-            className="link slide_left"
+            className="btn-create-hike "
             onClick={() => navigate("/hikes")}
           >
             Back

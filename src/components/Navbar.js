@@ -33,9 +33,9 @@ const NavBar = ({setHikes}) => {
               Hikes
             </Link>
           )}
-          <Link className="navlink" to="/explore">
+          {/* <Link className="navlink" to="/explore">
             Explore
-          </Link>
+          </Link> */}
         </div>
 
       </div>
