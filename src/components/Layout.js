@@ -2,6 +2,7 @@ import main from '../css/main.css'
 import { Outlet } from 'react-router-dom'
 import Navbar from './Navbar';
 import useAuth from '../hooks/useAuth';
+import HomePage from './HomePage';
 
 
 const Layout = ({setHikes}) => {
@@ -10,12 +11,11 @@ const Layout = ({setHikes}) => {
     return (
         <main className='App'>
                     <Navbar setHikes={setHikes} />
-
-            <section className='message-cont'>
+            {/* <section className='message-cont'>
 
                 {auth.user !== undefined ? `Welcome back ${auth.user} !` : null}
 
-            </section>
+            </section> */}
 
 
            

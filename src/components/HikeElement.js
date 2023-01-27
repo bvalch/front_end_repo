@@ -48,17 +48,20 @@ const HikeElement = ({ hike, findIndividualHike, loadForeignProfile }) => {
 
     return (
 
-
+        <div className="hike-card-container">
         <section onClick={handleIndividualHike} className="hike-element" style={{backgroundImage:`url(${process.env.PUBLIC_URL+"/cover/"+ hike.hikeCover})`, backgroundSize:"cover"}}>
-
-            
-           
-
-
-
-
         </section>
 
+            <div className="hike-orientation">
+            <div className="origin-dest">
+                {hike.hikeOrigin.split(",")[0]} <br/> to <br/> {hike.hikeDestination.split(",")[0]}
+             </div>
+
+
+             <div className="hike-date-time">Departing<br/> at {hike.hikeTime} <br/> {hike.hikeDate}</div>
+             </div>
+
+        </div>
     )
 
 }

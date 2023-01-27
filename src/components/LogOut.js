@@ -20,7 +20,7 @@ const LogOut=()=>{
         
         }catch(err){console.error(err)}
         setAuth('');
-        navigate('/')
+        navigate('/home')
     
     
     },[])

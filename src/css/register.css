@@ -1,14 +1,28 @@
 .registerCont {
     align-self: center;
     border: 1px solid white;
+    height:50vh;
     border-radius: 5px;
     margin-left: 0%;
-    margin-top: 5vh;
-    width: 50%;
+    width: 40%;
     text-align: center;
+    margin-left:30%;
+    margin-top:10%;
+    box-shadow: 10px 10px 5px #445449;
+
+}
+.login-reg-input{
+    width:40%;
+    align-self: center;
+    margin-top:2%;
+}
+.h1-login-reg{
+    color:white;
+    margin-top:5%;
 }
 
- .profileCont {
+
+ /* .profileCont {
 
     align-self: center;
     border: 1px solid white;
@@ -22,25 +36,25 @@
 .label {
     color: white;
 
-}
+} */
 
-.div {
+/* .div {
     font-size: 18px;
 
-}
+} */
 
-
+/* 
 .h1 {
     font-size: 24px;
     ;
     color: white
-}
+} */
 
-.sign-in-btn {
+/* .sign-in-btn {
     border-radius: 20px;
     margin-bottom: 15px;
     background-color: white;
     width: 120px;
 
 
-}
+} */

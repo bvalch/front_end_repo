@@ -5,58 +5,61 @@ import SendCommentMessage from "./SendCommentMessage";
 import Comments from "./Comments";
 import useAxiosRefresh from "../hooks/useAxiosRefresh";
 
-const HikeDetail = ({ individualHike,setIndividualHike,loadForeignProfile }) => {
+const HikeDetail = ({
+  individualHike,
+  setIndividualHike,
+  loadForeignProfile,
+}) => {
   const [showMap, setShowMap] = useState(false);
-  const [showCommentBox,setShowCommentBox]=useState(false)
-  const [showComments, setShowComments]=useState(false)
-  const [comments,setComments]=useState();
-  const axiosRefresh=useAxiosRefresh();
-  useEffect(()=>{
-
-  },[comments])
+  const [showCommentBox, setShowCommentBox] = useState(false);
+  const [showComments, setShowComments] = useState(false);
+  const [comments, setComments] = useState();
+  const axiosRefresh = useAxiosRefresh();
+  useEffect(() => {}, [comments]);
   if (individualHike === undefined) return <div> Loading</div>;
 
-  const onRouteReveal=()=>{
-    setShowMap(true)
-  }
-  const handleShowCommentsClick= async ()=>{
-    try{
-        const response = await axiosRefresh.get("comment/hike/"+individualHike._id,{    
-        withCredentials:true}
-        )
-        await setComments(response.data)
-        setShowComments(true)
-
-    }catch(err)
-    {console.error(err)}
-    setShowComments(!showComments)
+  const onRouteReveal = () => {
+    setShowMap(true);
+  };
+  const handleShowCommentsClick = async () => {
+    try {
+      const response = await axiosRefresh.get(
+        "comment/hike/" + individualHike._id,
+        {
+          withCredentials: true,
+        }
+      );
+      await setComments(response.data);
+      setShowComments(true);
+    } catch (err) {
+      console.error(err);
+    }
+    setShowComments(!showComments);
   };
 
-  const postComment= async (comment)=>{
-    const individualHikeCopy={...individualHike}
+  const postComment = async (comment) => {
+    const individualHikeCopy = { ...individualHike };
     try {
-      const response = await axiosRefresh.post("/comment/hike",
+      const response = await axiosRefresh.post(
+        "/comment/hike",
         JSON.stringify(comment),
         {
           withCredentials: true,
         }
-      )
-      console.log(response.data)
-      individualHikeCopy.hikeComments.push(response.data._id)
-      await setIndividualHike(individualHikeCopy)
-      setShowCommentBox(false)
-
+      );
+      console.log(response.data);
+      individualHikeCopy.hikeComments.push(response.data._id);
+      await setIndividualHike(individualHikeCopy);
+      setShowCommentBox(false);
     } catch (err) {
       console.log(err);
     }
     await handleShowCommentsClick();
-  }
-const handleRequestProfile=async(e)=>{
-  const userIdToView=(e.currentTarget.getAttribute("value"))
-  await loadForeignProfile(userIdToView)
-}
-
-
+  };
+  const handleRequestProfile = async (e) => {
+    const userIdToView = e.currentTarget.getAttribute("value");
+    await loadForeignProfile(userIdToView);
+  };
 
   return (
     <div className="hikedetail">
@@ -78,30 +81,83 @@ const handleRequestProfile=async(e)=>{
           <div className="date-time-join">
             Transport : {individualHike.hikeTransport}
           </div>
-          <div className="date-time-join" value={individualHike.hikeOwnerId} onClick={(e)=>handleRequestProfile(e)}>
+          <div
+            className="date-time-join"
+            value={individualHike.hikeOwnerId}
+            onClick={(e) => handleRequestProfile(e)}
+          >
             Organiser: {individualHike.hikeOwner}
           </div>
         </div>
       </div>
-      <div className="actions-menu">
-        <div className="actoon" onClick={onRouteReveal}>Reveal route</div>
+
+      {/* <div className="actions-menu">
+    
         <div className="actoon">Join</div>
         <div className="actoon">Message</div>
-      </div>
+      </div> */}
 
-      <div className="hike-description">{individualHike.hikeInfo}</div>
-      { showMap && <GoogleMapModal showMap={showMap} setShowMap={setShowMap} origin={individualHike.hikeOrigin} destination={individualHike.hikeDestination} transport={individualHike.hikeTransport} /> }
 
-      <div className="comments-addcomment-cont">
-                <div className="comments-count" onClick={handleShowCommentsClick}>{showComments?"Hide Comments" :individualHike.hikeComments.length+"Comments" }</div>
-                <div className="add-comment" onClick={()=>{setShowCommentBox(!showCommentBox)}}>{!showCommentBox? "AddComment" : "Hide"}</div>
+      <div className="hike-cover-text">
+
+
+        <div className="hike-cover-container">
+          <div
+            className="hike_cover"
+            style={{
+              backgroundImage: `url(${
+                process.env.PUBLIC_URL + "/cover/" + individualHike.hikeCover
+              })`,
+              backgroundSize: "cover",
+              backgroundPosition: "center center",
+            }}
+          ></div>
+          <div className="hike-description">{individualHike.hikeInfo}</div>
         </div>
 
-        {showCommentBox && <SendCommentMessage hikeId={individualHike._id} postComment={postComment}/>}
 
-       
+      </div>
 
-        {showComments&&<Comments comments={comments} setShowComments={setShowComments}/>}
+
+      {showMap && (
+        <GoogleMapModal
+          showMap={showMap}
+          setShowMap={setShowMap}
+          origin={individualHike.hikeOrigin}
+          destination={individualHike.hikeDestination}
+          transport={individualHike.hikeTransport}
+        />
+      )}
+
+      <div className="comments-addcomment-cont">
+        <div className="comments-count action-button" onClick={handleShowCommentsClick}>
+          {showComments
+            ? "Hide Comments"
+            :  "Comments: " + individualHike.hikeComments.length}
+        </div>
+        <div
+          className="action-button"
+          onClick={() => {
+            setShowCommentBox(!showCommentBox);
+          }}
+        >
+          {!showCommentBox ? "AddComment" : "Hide"}
+        </div>
+        <div className="action-button" onClick={onRouteReveal}>
+          Reveal route
+        </div>
+      </div>
+
+      {showCommentBox && (
+        <SendCommentMessage
+          hikeId={individualHike._id}
+          postComment={postComment}
+        />
+      )}
+
+      {showComments && (
+        <Comments comments={comments} setShowComments={setShowComments} />
+      )}
     </div>
   );
 };

@@ -1,21 +1,25 @@
 .comments-container {
   /* border: 2px solid red; */
-  width: 80%;
+  width: 40%;
   min-height: 10%;
-  margin-left: 10%;
-  margin-top:4%;
+  margin-left: 30%;
+  margin-top:6%;
 }
 .comment-by-time{
-  border:2px solid black;
+  border:2px solid white;
   display:flex;
   justify-content: space-between;
   font-size: 0.6em;
+  background-color: rgb(194, 222, 145);
+
+  
 }
 .comment{
   margin-bottom: 3%;
   font-size: 0.8em;
-  border-bottom:0.15em dashed darkgreen;
-  border-left:0.15em dashed darkgreen;
-  border-right:0.15em dashed darkgreen;
+border:2px solid white;
+  background-color: rgb(231, 255, 189);
+  box-shadow: 10px 10px 5px #445449;
+
 
 }

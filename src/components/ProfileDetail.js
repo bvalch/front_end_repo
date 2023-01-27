@@ -36,8 +36,8 @@ const ProfileDetail = ({ profile, id }) => {
       <div className="profile-description">{profile.personInfo}</div>
 
 
-    {profile.profileOwnerAlias===auth.username?      <div className="edit-profile-btn-cont"><div>Edit</div></div>
- :      <div className="edit-profile-btn-cont" onClick={handleMmessageClick}><div>Message</div></div>
+    {profile.profileOwnerAlias===auth.username?      <div className="edit-profile-btn-cont"><div>{null}</div></div>
+ :      <div className="edit-profile-btn-cont" onClick={handleMmessageClick}><div className="submit-message">Message</div></div>
 }
       </div>
       {openMessage&&<MessageModal foreignProfile={profile} setOpenMessage={setOpenMessage}/>}

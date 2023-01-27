@@ -1,8 +1,8 @@
 .profile-nav {
   /* border: 2px solid blue; */
-  width: 80%;
+  width: 60%;
   text-decoration: none;
-  margin-left: 10%;
+  margin-left: 20%;
   margin-top: 5%;
   min-height: 5vh;
   display:flex;
@@ -14,8 +14,9 @@
   text-decoration:none;
   justify-content: center;
   align-items: center;
-  background-color:rgb(163, 248, 163);
-  padding-right:1%;
+  background-color: rgb(151, 211, 151);
+    padding-right:1%;
+    border-bottom:2px solid white;
 
 }
 .profile-nav-link:focus {
@@ -28,10 +29,12 @@
     text-decoration:none;
     justify-content: center;
     align-items: center;
-    background-color:rgb(163, 248, 163);
+    background-color: rgb(151, 211, 151);
     border-top-left-radius: 10px;
     border-top-left-radius: 10px;
     padding-right:1%;
+    border-bottom:2px solid white;
+
 
   }
   .profile-nav-link-right {
@@ -40,8 +43,10 @@
     text-decoration:none;
     justify-content: center;
     align-items: center;
-    background-color:rgb(163, 248, 163);
+    background-color: rgb(151, 211, 151);
     border-top-right-radius: 10px;
+    border-bottom:2px solid white;
+
 
   }
   .profile-nav-link-left:focus{

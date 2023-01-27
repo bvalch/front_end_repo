@@ -5,3 +5,7 @@
 5/ issue with window.google, apparently google only comes into play if i visit the crete hike section, probably initialised google there, gotta see how to move this, probably move all google stuff in the modal component
 6/visiting profile-hikes when no hikes crashed the app, need conditionals there as well :DDD
 
+
+    box-shadow: 10px 10px 5px #445449;
+
+#315939

@@ -60,10 +60,10 @@ const MessageThreadDetail = ({ messageThread, setDisplaySingle }) => {
         {messageNodes}
 
         <div className="reply-back">
-          <div onClick={() => setDisplaySingle(false)} className="back">
+          <div onClick={() => setDisplaySingle(false)} className="back reply">
                 Back
           </div>
-          <div className="reply" onClick={handleReplyButtonClick}>
+          <div className="reply back" onClick={handleReplyButtonClick}>
             {showReply? "Close" : "Reply"}
           </div>
         </div>

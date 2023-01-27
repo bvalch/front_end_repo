@@ -65,9 +65,11 @@ const ProfileMessages = () => {
             onClick={(e) => handleDisplaySingle(e)}
             value={msgThr.messageThreadId}
           >
-            {cnt !== 0 ? cnt + " unread" : "no unread "}{" "}
+            {cnt !== 0 ? cnt + " Unread" : "View thread "}{" "}
           </div>
-          <div>From {msgThr.messageThreadParties[0].userName}</div>
+          <div className="from-container">
+          <div className="from">From {msgThr.messageThreadParties[0].userName}</div>
+          </div>
 
         </div>
       </div>

@@ -68,7 +68,7 @@ const UserComments =({findIndividualHike})=>{
 
             <div className="date-time">{comment.time}</div>
             <div className="delete-view">
-              <div value={[comment._id,comment.hikeToComment]} onClick={(e)=>handleDeleteClick(e)}>delete</div> <div className="view"onClick={(e)=>handleViewClick(e)} value={comment.hikeToComment}>view</div></div>
+              <div className="delete-view-comment" value={[comment._id,comment.hikeToComment]} onClick={(e)=>handleDeleteClick(e)}>Delete</div> <div className="delete-view-comment view" onClick={(e)=>handleViewClick(e)} value={comment.hikeToComment}>View</div></div>
             
 
             </div>

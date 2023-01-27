@@ -11,7 +11,6 @@ import { useState } from 'react'
 import CreateHike from './components/CreteHike.js';
 import RequireAuth from './components/RequireAuth.js';
 import LogOut from './components/LogOut.js';
-import ForeignProfile from './components/ForeignProfile.js';
 import { axiosRefresh } from './api/axios.js';
 import LoginPersist from './components/LoginPersist';
 import HikeDetail from './components/HikeDetail';
@@ -65,9 +64,9 @@ function App() {
 
 
         <Route element={<LoginPersist />}>
-        <Route  element={<RequireAuth />}>
 
           <Route path='/home' element={<HomePage />} />
+          <Route  element={<RequireAuth />}>
 
           <Route path='hikes' element={<Hikes
             hikes={hikes}

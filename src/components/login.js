@@ -42,11 +42,12 @@ const Login = () => {
 
     return (
         <section className="registerCont">
-            <h1 className="h1">Login with your details</h1>
+            <h1 className="h1-login-reg">Login with your details</h1>
             <form onSubmit={handleSubmit}>
                 <label className='label' htmlFor="username">Username:</label>
                 <br />
                 <input type='text'
+                className="login-reg-input"
                     id='username'
                     autoComplete="off"
                     onChange={(e) => setUser(e.target.value)}
@@ -58,6 +59,7 @@ const Login = () => {
                 <br />
 
                 <input type='password'
+                className="login-reg-input"
                     id='password'
                     onChange={(e) => setPass(e.target.value)}
                     required

@@ -1,19 +1,18 @@
 .hikes{
-    border:2px solid black;
     
     
 
 }
 .hike-container {
-    border: 2px solid red;
     display: flex;
     flex-wrap: wrap;
-    height: 60vh;
+    height: 80vh;
     width:100%;
     overflow-y: scroll;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    scrollbar-width:thin
+    scrollbar-width:none;
+    
     
 }
 .hike-container::-webkit-scrollbar {

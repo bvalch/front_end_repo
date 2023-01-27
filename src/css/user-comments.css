@@ -10,17 +10,20 @@
 
 }
 .user-comment-container {
-  border: 2px solid black;
+  border: 2px solid white;
   /* height: 7vh; */
   margin-bottom:2%;
+  border-radius:5px;
+  box-shadow: 10px 10px 5px #445449;
+
   
 }
 .comment-info-options {
-  border: 2px solid yellow;
-  height: 3vh;
+  height: 5vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: rgb(194, 222, 145);
 }
 .delete-view{
     display:flex;
@@ -28,4 +31,37 @@
 }
 .view{
     margin-left:5%;
+}
+
+.delete-view-comment{
+  background: transparent;
+  margin-bottom: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: rgb(48, 62, 25);
+  border: 2px solid rgb(231, 255, 189);
+  border-radius: 5px;
+  padding: 5px 6px;
+  display: flex;
+  letter-spacing: 0px;
+  cursor: pointer;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+  font-size: 0.7em;
+  font-family: "Ubuntu", sans-serif;
+}
+.delete-view-comment:hover {
+  box-shadow: inset 0 0 0 50px #abd0b6;
+  border-radius: 10px;
+}
+.comment-body{
+  background-color: rgb(231, 255, 189);
+  min-height:5vh;
+  color:darkolivegreen
+}
+.date-time{
+  color:rgb(48, 62, 25)
 }

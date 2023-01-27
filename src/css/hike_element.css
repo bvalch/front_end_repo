@@ -1,14 +1,44 @@
 .hike-element {
-    border: 2px solid black;
-    flex-basis: 150px;
-    min-height: 150px;
-    min-width: 150px;
+    border-radius:10px;
+    flex-basis: 250px;
+    min-height: 250px;
+    min-width: 350px;
     margin: 0;
-    margin-top: 1%;
+    
 }
-.dove{
-    height:300px;
-    width:400px;
-    border:2px solid black;
+
+.hike-orientation{
+    display:flex;
+    max-width:350px;
+    justify-content:space-between;
+    margin-top:10%;
+    color:white;
+    font-size:1.5em;
+    font-weight:bolder;
+    text-align:center;
+
+
+
+
 
 }
+.hike-date-time{
+text-align: end;
+margin-bottom:1%;
+color:white;
+
+font-weight:bolder;
+text-align:center;
+}
+.hike-card-container{
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;;
+margin-bottom:5%;
+margin-top: 1%;
+
+}
+.hike-card-container:hover{
+    box-shadow: 10px 10px 20px #445449;
+
+}
+
